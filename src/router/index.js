@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import ContactView from '@/views/ContactView.vue'
 import ProductsView from '@/views/ProductsView.vue'
 import CheckoutView from '@/views/CheckoutView.vue'
+import LoginView from '@/views/LoginView.vue'
 const routes = [
   {
     path: '/',
@@ -26,8 +27,8 @@ const routes = [
   },
   {
     path: '/Login',
-    name: 'checkout',
-    component: CheckoutView
+    name: 'login',
+    component: LoginView
   },
   {
     path: '/about',

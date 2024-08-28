@@ -1,9 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
         <div class="container-fluid">
-            <router-link class="navbar-brand" to="/">
-                <img src="https://codjoelmayer.github.io/projectImages/images/logo.png" loading="lazy" alt="logo">
-            </router-link>
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -27,7 +25,7 @@
                         <router-link class="nav-link" to="/admin">Admin</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/reachUs">Reach us</router-link>
+                        <router-link class="nav-link" to="/contact">Reach us</router-link>
                     </li>
                     <ul class="userAccount navbar-nav">
                         <li class="nav-item">
@@ -45,3 +43,9 @@
         </div>
     </nav>
 </template>
+
+<script>
+export default{
+    name: 'NavBarComp'
+}
+</script>
