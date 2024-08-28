@@ -84,15 +84,15 @@ export default {
 @media (max-width: 768px) {
   .landing {
     flex-direction: column;
-    height: auto; /* Adjust height to fit content */
+    height: auto; 
   }
 
   .land-left,
   .land-center,
   .land-right {
     width: 100%;
-    height: auto; /* Allow height to adjust based on content */
-    padding: 20px; /* Add padding for better spacing on smaller screens */
+    height: auto;
+    padding: 20px;
   }
   .landing2{
   /* margin-top: 3em; */
@@ -108,11 +108,11 @@ export default {
 
 @media (max-width: 480px) {
   .landing2 {
-    height: 50vh; /* Adjust height to fit content */
+    height: 50vh; 
   }
 
   .landing3 {
-    height: 50vh; /* Adjust height to fit content */
+    height: 50vh; 
   }
 }
 
