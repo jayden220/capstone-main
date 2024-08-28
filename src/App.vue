@@ -10,12 +10,12 @@
   
 </template>
 <script>
-// import FooterComp from '@/components/FooterComp.vue';
+import FooterComp from '@/components/FooterComp.vue';
 import NavBarComp from './components/NavBarComp.vue';
 export default {
   components: {
-    NavBarComp
-    // FooterComp
+    NavBarComp,
+    FooterComp
   }
 }
 </script>
