@@ -3,15 +3,15 @@
     <div class="landing">
       <div class="land-left">
         <div class="left-content">
-          <h1>Hello</h1>
+          <h1>Savor Local Flavours</h1>
+          <h4>Discover the best dishes in Cape Town. Fresh ingredients and authentic recipes right here in your neighborhood.</h4>
         </div>
       </div>
-      <div class="land-center">
-        <h2>fjg</h2>
-      </div>
+      
       <div class="land-right">
         <div class="right-content">
-          <h1>Hello</h1>
+          <!-- <img src= class="img1"> -->
+
         </div>
       </div>
     </div>
@@ -46,7 +46,7 @@ export default {
 }
 .landing2{
   /* margin-top: 3em; */
-  height: 100vh;
+  height: 110vh;
   background: darkcyan;
 }
 .landing3{
@@ -55,31 +55,40 @@ export default {
   background: rgb(142, 70, 31);
 }
 .land-left{
-  background: red;
+  background: #c15144;
+  color: antiquewhite;
   height: 100vh;
-  width: 90vh;
+  width: 50%;
   /* padding: 30px 3px 30px 30px; */
 }
 .land-right{
   background: rgb(0, 13, 255);
   height: 100vh;
-  width: 90vh;
+  width: 50%;
 }
-.land-center{
-  background: rgb(87, 130, 87);
-  height: 100vh;
-  width: 90vh;
+/* .img1{
+  width: 43.5em;
+  height: 43.5em;
+} */
+.img1{
+  max-width: 100%; /* ensure image doesn't exceed parent container's width */
+  max-height: 100vh; /* set maximum height to 100vh */
+  object-fit: cover; /* scale image while maintaining aspect ratio */
+  /* margin: 20px; add some margin around the image */
+  padding: 10px; /* add some padding around the image */
+  border-radius: 10px; /* add a subtle border radius (optional) */
 }
 .left-content{
   justify-content: center;
   margin-top: 3em;
   text-align: center;
 }
-.right-content{
+
+/* .right-content{
   justify-content: center;
   margin-top: 3em;
   text-align: center;
-}
+} */
 
 @media (max-width: 768px) {
   .landing {
@@ -88,7 +97,6 @@ export default {
   }
 
   .land-left,
-  .land-center,
   .land-right {
     width: 100%;
     height: auto;
@@ -107,6 +115,12 @@ export default {
 }
 
 @media (max-width: 480px) {
+  .land-left,
+  .land-right {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
   .landing2 {
     height: 50vh; 
   }
