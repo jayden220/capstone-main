@@ -1,13 +1,24 @@
+/* eslint-disable */
 <template>
-  <nav>
+  <nav-bar-comp/>
+  <!-- <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
     <router-link to="/contact">Contact</router-link> |
-    <router-link to="/product">Product</router-link> 
-  </nav>
+    <router-link to="/products">products</router-link> |
+    <router-link to="/checkout">Checkout</router-link> 
+  </nav> -->
   <router-view/>
 </template>
-
+<script>
+import NavBarComp from './components/NavBarComp.vue';
+</script>
+export default {
+  components: {
+    NavBar,
+    Footer
+  }
+}
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
