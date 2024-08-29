@@ -4,8 +4,7 @@
 
 <script>
 export default {
-    name: "contact-view"
-
+    name: "contactView"
 }
 </script>
 

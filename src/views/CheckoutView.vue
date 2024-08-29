@@ -6,7 +6,7 @@
 <script>
 // import NavBarComp from '@/components/NavBarComp.vue';
 export default {
-    // name: 'CheckoutView',
+    name: 'checkoutView',
   components: {
     
   }

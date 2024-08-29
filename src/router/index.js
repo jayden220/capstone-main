@@ -4,6 +4,9 @@ import ContactView from '@/views/ContactView.vue'
 import ProductsView from '@/views/ProductsView.vue'
 import CheckoutView from '@/views/CheckoutView.vue'
 import LoginView from '@/views/LoginView.vue'
+import AdminView from '@/views/AdminView.vue'
+import ProductView from '@/views/ProductView.vue'
+import SignupView from '@/views/SignupView.vue'
 const routes = [
   {
     path: '/',
@@ -21,6 +24,11 @@ const routes = [
     component: ProductsView
   },
   {
+    path: '/product',
+    name: 'product',
+    component: ProductView
+  },
+  {
     path: '/checkout',
     name: 'checkout',
     component: CheckoutView
@@ -29,6 +37,16 @@ const routes = [
     path: '/Login',
     name: 'login',
     component: LoginView
+  },
+  {
+    path: '/Signup',
+    name: 'signiup',
+    component: SignupView
+  },
+  {
+    path: '/Admin',
+    name: 'admin',
+    component: AdminView
   },
   {
     path: '/about',

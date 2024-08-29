@@ -1,16 +1,13 @@
 <template>
-  <h3>Admin</h3>
+    <div>
+       <h1>SigUp</h1> 
+    </div>
 </template>
-
 <script>
 export default {
- name: 'adminView',
-  components: {
-
-  }
+    name: "signupView"
 }
 </script>
-
 <style>
-
+    
 </style>

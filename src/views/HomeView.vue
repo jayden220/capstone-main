@@ -4,14 +4,13 @@
       <div class="land-left">
         <div class="left-content">
           <h1>Savor Local Flavours</h1>
-          <h4>Discover the best dishes in Cape Town. Fresh ingredients and authentic recipes right here in your neighborhood.</h4>
+          <p>Discover the best dishes in Cape Town. Fresh ingredients and authentic recipes right here in your neighborhood.</p>
         </div>
       </div>
       
       <div class="land-right">
         <div class="right-content">
-          <!-- <img src= class="img1"> -->
-
+          <img src="https://jayden220.github.io/capstone-images/240_F_931728578_y7DhaNSHwTXlejxcDtsW0GKCqxZusUkj.jpg" class="img1">
         </div>
       </div>
     </div>
@@ -32,7 +31,7 @@
 
 
 export default {
-  name: 'HomeView'
+  name: 'homeView'
 
 }
 </script>
@@ -71,12 +70,15 @@ export default {
   height: 43.5em;
 } */
 .img1{
-  max-width: 100%; /* ensure image doesn't exceed parent container's width */
-  max-height: 100vh; /* set maximum height to 100vh */
-  object-fit: cover; /* scale image while maintaining aspect ratio */
-  /* margin: 20px; add some margin around the image */
-  padding: 10px; /* add some padding around the image */
-  border-radius: 10px; /* add a subtle border radius (optional) */
+  max-width: 100%; 
+  /* max-height: 100vh; */
+  object-fit: cover; 
+  /* margin: 20px;  */
+    /* padding: 10px; */
+    height: 43.45em;
+    width: 40em;
+
+  /* border-radius: 10px;  */
 }
 .left-content{
   justify-content: center;
