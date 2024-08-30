@@ -10,13 +10,15 @@
       
       <div class="land-right">
         <div class="right-content">
-          <img src="https://jayden220.github.io/capstone-images/240_F_931728578_y7DhaNSHwTXlejxcDtsW0GKCqxZusUkj.jpg" class="img1">
+          <img src="https://jayden220.github.io/capstone-images/packaged%20bilton%201718cf8b-c406-42bb-80ad-4e047101e4d1.png" class="img1">
         </div>
       </div>
     </div>
     <div class="landing2">
+
       <div class="content2">
-        <h1>rrrr</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione at commodi doloremque ducimus, odio asperiores voluptatum. Neque at distinctio minima cumque, alias dolorum numquam repellendus sequi esse ab nesciunt ratione.</p>
+        <img src="https://jayden220.github.io/capstone-images/curry%20and%20bilto%20cb3f45ec-b273-4347-8376-1884f9ecd2f9.png" alt="" class="img2">
       </div>
     </div>
     <div class="landing3">
@@ -46,22 +48,26 @@ export default {
 .landing2{
   /* margin-top: 3em; */
   height: 110vh;
-  background: darkcyan;
+  background: #c15144;
 }
 .landing3{
   /* margin-top: 3em; */
   height: 50vh;
-  background: rgb(142, 70, 31);
+  background: #c15144;
+  display: flex;
+  align-items: center;
 }
 .land-left{
   background: #c15144;
   color: antiquewhite;
   height: 100vh;
   width: 50%;
+  display: flex;
+  align-items: center;
   /* padding: 30px 3px 30px 30px; */
 }
 .land-right{
-  background: rgb(0, 13, 255);
+  background:#c15144;
   height: 100vh;
   width: 50%;
 }
@@ -69,28 +75,49 @@ export default {
   width: 43.5em;
   height: 43.5em;
 } */
-.img1{
-  max-width: 100%; 
-  /* max-height: 100vh; */
-  object-fit: cover; 
-  /* margin: 20px;  */
-    /* padding: 10px; */
-    height: 43.45em;
-    width: 40em;
+.img1 {
+    width: 100%; /* Set the maximum width to 100% of its parent container */
+    height: 99.98vh; /* Set the height to auto to maintain the aspect ratio */
+    object-fit: cover; /* Scale the image to cover the entire container */
+     /* Add some margin for better visibility */
+    /* Add some padding for better visibility */
+     /* Add a border radius for a rounded corner effect */
+  }
+  .img2{
+    width: 120%; /* Set the maximum width to 100% of its parent container */
+    height: 110vh; /* Set the height to auto to maintain the aspect ratio */
+    object-fit: cover;
+  }
 
-  /* border-radius: 10px;  */
+
+.left-content h1{
+
+  display: flexbox;
+  flex-direction: row;
+  margin-left: .5em;
+  /* flex-flow:wrap ; */
+  /* justify-content: flex-end; */
+  /* margin: 2em 0 ; */
+  /* text-align: center; */
 }
-.left-content{
-  justify-content: center;
-  margin-top: 3em;
-  text-align: center;
+.left-content p {
+  margin-left: 1.2em
+  ;
+}
+.content2{
+  /* margin-left: 1.2em; */
+  color: aqua;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row-reverse;
+  /* margin: 2em 0 ; */
+}
+.content2 h1{
+  margin: 2em 0;
+
 }
 
-/* .right-content{
-  justify-content: center;
-  margin-top: 3em;
-  text-align: center;
-} */
+
 
 @media (max-width: 768px) {
   .landing {
@@ -98,37 +125,107 @@ export default {
     height: auto; 
   }
 
-  .land-left,
-  .land-right {
+  .land-left
+   {
     width: 100%;
     height: auto;
-    padding: 20px;
+    /* padding: 20px; */
+  }
+  .land-right{
+    width: 100%;
+    height: 90vh;
   }
   .landing2{
   /* margin-top: 3em; */
   height: 100vh;
   background: darkcyan;
+  margin-top: 4.5em;
 }
 .landing3{
   /* margin-top: 3em; */
   height: 50vh;
   background: rgb(142, 70, 31);
+  
 }
+.img1{
+    height: 100.5vh;
+    width: 100cqi;
+  }
+  .left-content {
+     flex-flow:wrap ; 
+     justify-content: flex-end;
+     margin: 2em 0 ;
+     text-align: center; 
+  }
+  .content2{
+  margin-left: 1.2em;
+  color: aqua;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* margin: 2em 0 ; */
+}
+/* .content2 p{
+ flex-wrap: wrap;
+ margin: 2em auto
+} */
+.content2 p {
+  padding: 15px;
+  text-align: left;
+  /* border-bottom: 1px solid #ddd; */
+  word-wrap: break-word; /* Enables wrapping of long words */
+  overflow-wrap: break-word; /* Allows wrapping within words for long texts */
+  word-break: break-word; /* Breaks long words at arbitrary points */
+  white-space: normal; /* Ensures text wraps normally */
 }
 
+.img2{
+  width: 50%;
+}
+}
+@media (max-width: 1025px){
+  /* .img1{
+    height: 99.98vh;
+  } */
+}
 @media (max-width: 480px) {
-  .land-left,
-  .land-right {
+  .land-left
+   {
     width: 100%;
     height: auto;
     padding: 20px;
   }
+  .land-right{
+    width: 100%;
+    height: 60vh;
+  }
   .landing2 {
-    height: 50vh; 
+    height: 85vh;
+    margin: 0 0 0 0; 
+  }
+  .content2{
+    margin: 0 0 0 0;
   }
 
   .landing3 {
-    height: 50vh; 
+    height: 60vh; 
+  }
+  .img1{
+    height: 60vh;
+    width: 100%;
+    
+  }
+  .img2{
+    height: 80vh;
+    width: 100cqi;
+    
+  }
+  .left-content {
+     flex-flow:wrap ; 
+  justify-content: flex-end;
+  margin: 2em 0 ;
+   text-align: center; 
   }
 }
 
