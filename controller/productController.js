@@ -1,8 +1,11 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import { products } from '../model/index.js'
+import { products } from '../model/productDb.js'
+
 const productRouter = express.Router()
+
 productRouter.use(bodyParser.json())
+
 productRouter.get('/', (req, res) => {
     products.getProducts(req, res)
 })
@@ -18,6 +21,4 @@ productRouter.patch('/update/:id', (req, res) => {
 productRouter.delete('/delete/:id', (req, res) => {
     products.deleteProduct(req, res)
 })
-export {
-    productRouter
-}
+export {productRouter}
