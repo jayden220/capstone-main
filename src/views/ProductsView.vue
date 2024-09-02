@@ -1,4 +1,7 @@
 <template>
+  <div class="product-main">
+
+ 
   <div class="product-container">
     <CardComp>
       <h1>img</h1>
@@ -62,6 +65,7 @@
         <button>Buy Now</button>
       </template>
     </CardComp>
+  </div>
   </div>
 </template>
 
@@ -79,31 +83,13 @@ export default {
 
 <style>
 
-.product-container{
-  margin: 2em 3em;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-around;
-}
-/* @media (max-width: 600px) {
-  .contact-container {
-    padding: 15px;
+.product-main{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minMax(300px, 1fr));
+  place-items: center;
+  gap:1em;
 
-  }
-  
-  .submit-button {
-    font-size: 14px;
-  }
-  .main-container{
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    padding: 0 0;
 }
-.product-container{
-  margin: 2em 3em;
-  display: flex;
-  flex-direction: row;
-}
-} */
+
 </style>
