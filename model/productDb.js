@@ -1,9 +1,9 @@
-import { pool as db } from '/config/config.js';
+import { pool } from '../config/config.js'
 
-class Products {
+class products {
     fetchProducts(req, res) {
         const query = "SELECT productID, productName,productDes, productUrl, weight FROM products;";
-        db.query(query, (err, results) => {
+        pool.query(query, (err, results) => {
             if (err) {
                 res.status(500).json({ status: 500, message: 'Error fetching products' });
                 return;
@@ -14,7 +14,7 @@ class Products {
 
     recentProducts(req, res) {
         const query = "SELECT productID, productName,productDes, productUrl, weight FROM Products ORDER BY productID DESC LIMIT 5;";
-        db.query(query, (err, results) => {
+        pool.query(query, (err, results) => {
             if (err) {
                 res.status(500).json({ status: 500, message: 'Error fetching recent products' });
                 return;
@@ -25,7 +25,7 @@ class Products {
 
     fetchProduct(req, res) {
         const query = "SELECT productID, productName,productDes, productUrl, weight FROM Products WHERE productID = ?;";
-        db.query(query, [req.params.id], (err, results) => {
+        pool.query(query, [req.params.id], (err, results) => {
             if (err) {
                 res.status(500).json({ status: 500, message: 'Error fetching product' });
                 return;
@@ -36,36 +36,36 @@ class Products {
 
     addProduct(req, res) {
         const query = "INSERT INTO Products SET ?";
-        db.query(query, req.body, (err) => {
+        pool.query(query, req.body, (err) => {
             if (err) {
                 res.status(500).json({ status: 500, message: 'Error adding product' });
                 return;
             }
-            res.json({ status: 200, message: 'Product added successfully' });
+            res.json({ status: 200, message: 'Product added' });
         });
     }
 
     updateProduct(req, res) {
         const query = "UPDATE Products SET ? WHERE productID = ?;";
-        db.query(query, [req.body, req.params.id], (err) => {
+        pool.query(query, [req.body, req.params.id], (err) => {
             if (err) {
                 res.status(500).json({ status: 500, message: 'Error updating product' });
                 return;
             }
-            res.json({ status: 200, message: 'Product updated successfully' });
+            res.json({ status: 200, message: 'Product updated' });
         });
     }
 
     deleteProduct(req, res) {
         const query = "DELETE FROM Products WHERE productID = ?;";
-        db.query(query, [req.params.id], (err) => {
+        pool.query(query, [req.params.id], (err) => {
             if (err) {
                 res.status(500).json({ status: 500, message: 'Error deleting product' });
                 return;
             }
-            res.json({ status: 200, message: 'Product deleted successfully' });
+            res.json({ status: 200, message: 'Product deleted' });
         });
     }
 }
 
-export { Products };
+export {products};

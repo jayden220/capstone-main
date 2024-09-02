@@ -8,9 +8,10 @@ const pool = createPool({
     database: process.env.DATABASE,
     password: process.env.PASSWORD
 })
-pool.connect(function(err){
-    if(err) throw err;
-    console.log('Connected');  
-})
 
-export {pool}
+// pool.connect(function(err){
+//     if(err) throw err;
+//     console.log('Connected');  
+// })
+
+export { pool }

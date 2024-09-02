@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-
+import { productRouter } from './routes/productRouter.js'
 
 
 
@@ -14,7 +14,7 @@ app.use(cors({
     origin: 'http://localhost:3000',
     credentials:true
 }))
-// app.use('/product',productRouter)
+app.use('/product',productRouter)
 // app.use('/',navigate)
 
 app.listen(port, ()=> {
