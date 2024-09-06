@@ -1,95 +1,73 @@
 <template>
-  <div class="product-main">
+  <h1>hi</h1>
+  <div class="product-container">
 
+    <div v-if="!products || products.length === 0" class="loading-message">
+      Loading products or no products available...
+    </div>
+
+    <card-comp v-for="product in products" :key="product.productID">
+
+      <template #cardHeader>
+        <img :src="product.productUrl || 'default-image-url.jpg'" loading="lazy" class="img-fluid" :alt="product.productName || 'Product Image'" />
+      </template>
+
+      <template #cardBody>
+        <h5 class="card-title fw-bold">{{ product.productName }}</h5>
+        <p class="lead">
+          <span class="text-success fw-bold">Amount</span>: R{{ product.productPrice }}
+        </p>
+        <p>{{ product.productDes }}</p>
+    
+        <div class="button-wrapper d-md-flex d-block justify-content-between">
+          <router-link :to="{ name: 'ProductDetailView', params: { id: product.productID } }">
+            <button class="btn btn-success">View More</button>
+          </router-link>
+        </div>
+      </template>
  
-  <div class="product-container">
-    <CardComp>
-      <h1>img</h1>
-      <template #cardHeader>
-        <h2>Product 1</h2>
-      </template>
-      <!-- Card body content -->
-      <template #cardBody>
-        <p>This is a product description.</p>
-      </template>
-      <!-- Card footer content -->
-      <template #cardFooter>
-        <button>Buy Now</button>
-      </template>
-    </CardComp>
-  </div>
-  <div class="product-container">
-    <CardComp>
-      <h1>img</h1>
-      <template #cardHeader>
-        <h2>Product 1</h2>
-      </template>
-      <!-- Card body content -->
-      <template #cardBody>
-        <p>This is a product description.</p>
-      </template>
-      <!-- Card footer content -->
-      <template #cardFooter>
-        <button>Buy Now</button>
-      </template>
-    </CardComp>
-  </div>
-  <div class="product-container">
-    <CardComp>
-      <h1>img</h1>
-      <template #cardHeader>
-        <h2>Product 3</h2>
-      </template>
-      <!-- Card body content -->
-      <template #cardBody>
-        <p>This is a product description.</p>
-      </template>
-      <!-- Card footer content -->
-      <template #cardFooter>
-        <button>Buy Now</button>
-      </template>
-    </CardComp>
-  </div>
-  <div class="product-container">
-    <CardComp>
-      <h1>img</h1>
-      <template #cardHeader>
-        <h2>Product 3</h2>
-      </template>
-      <!-- Card body content -->
-      <template #cardBody>
-        <p>This is a product description.</p>
-      </template>
-      <!-- Card footer content -->
-      <template #cardFooter>
-        <button>Buy Now</button>
-      </template>
-    </CardComp>
-  </div>
+      <template #cardFooter></template>
+    </card-comp>
   </div>
 </template>
-
 
 <script>
 import CardComp from '@/components/CardComp.vue';
 
 export default {
-     name: 'productsView',
+  name: 'productsView',
   components: {
-    CardComp
-  }
-}
+    CardComp,
+  },
+  computed: {
+    products() {
+      // Ensure the products exist, otherwise return an empty array to avoid undefined issues.
+      return this.$store.state.products || [];
+    },
+  },
+  mounted() {
+    // Dispatch action to fetch products from the store.
+    this.$store.dispatch('fetchProducts').catch(error => {
+      console.error('Error fetching products:', error);
+    });
+  },
+};
 </script>
 
-<style>
-
-.product-main{
+<style scoped>
+/* Ensure the product grid displays properly */
+.product-container {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minMax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1em;
   place-items: center;
-  gap:1em;
-
 }
 
+/* Message when products are loading or empty */
+.loading-message {
+  text-align: center;
+  font-size: 1.2em;
+  color: gray;
+}
 </style>

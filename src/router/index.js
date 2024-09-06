@@ -34,13 +34,13 @@ const routes = [
     component: CheckoutView
   },
   {
-    path: '/Login',
+    path: '/login',
     name: 'login',
     component: LoginView
   },
   {
     path: '/Signup',
-    name: 'signiup',
+    name: 'signup',
     component: SignupView
   },
   {

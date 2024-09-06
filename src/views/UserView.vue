@@ -1,5 +1,6 @@
 <template>
   <h3>user view</h3>
+  
 </template>
 
 <script>

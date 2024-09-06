@@ -85,7 +85,7 @@ export default {
   }
   .img2{
     width: 120%; /* Set the maximum width to 100% of its parent container */
-    height: 110vh; /* Set the height to auto to maintain the aspect ratio */
+    height: 100vh; /* Set the height to auto to maintain the aspect ratio */
     object-fit: cover;
   }
 
@@ -143,12 +143,12 @@ export default {
 }
 .landing3{
   /* margin-top: 3em; */
-  height: 50vh;
+  height: 3vh;
   background: rgb(142, 70, 31);
   
 }
 .img1{
-    height: 100.5vh;
+    height: 102vh;
     width: 100cqi;
   }
   .left-content {
@@ -158,7 +158,7 @@ export default {
      text-align: center; 
   }
   .content2{
-  margin-left: 1.2em;
+  margin-left: 1.5em;
   color: aqua;
   display: flex;
   justify-content: space-evenly;
@@ -181,7 +181,10 @@ export default {
 }
 
 .img2{
-  width: 50%;
+  height: 80vh;
+  width: 95cqi;
+
+  /* margin: 0 auto; */
 }
 }
 @media (max-width: 1025px){
