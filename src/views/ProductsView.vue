@@ -1,77 +1,76 @@
 /* eslint-disable */
 <template>
-  <h1>hi</h1>
   <div class="product-container">
-
-    <!-- <div v-if="!products || products.length === 0" class="loading-message">
-      Loading products or no products available...
-    </div> -->
-
-    <card-comp v-for="product in products" :key="product">
-
-      <template #cardHeader>
-        <img :src="product.productUrl || 'default-image-url.jpg'" loading="lazy" class="img-fluid" :alt="product.productName || 'Product Image'" />
-      </template>
-
-      <template #cardBody>
-        <h5 class="card-title fw-bold">{{ product.productName }}</h5>
-        <p class="lead">
-          <span class="text-success fw-bold">Amount</span>: R{{ product.productPrice }}
-        </p>
+    <h1>Products List</h1>
+    <div v-if="loading" class="loading-message">Loading...</div>
+    <div v-if="error" class="error">{{ error }}</div>
+    <div v-if="products.length > 0">
+      <div class="product-card" v-for="product in products" :key="product.productID">
+        <h2>{{ product.productName }}</h2>
+        <img :src="product.productUrl || 'https://via.placeholder.com/150'" alt="Product Image" class="product-image" />
         <p>{{ product.productDes }}</p>
-    
-        <div class="button-wrapper d-md-flex d-block justify-content-between">
-          <router-link :to="{ name: 'ProductDetailView', params: { id: product.productID } }">
-            <button class="btn btn-success">View More</button>
-          </router-link>
-        </div>
-      </template>
- 
-      <template #cardFooter></template>
-    </card-comp>
+        <p>Price: R{{ product.productPrice }}</p>
+        <p>Stock: {{ product.weight }}</p>
+        <button>add to cart</button>
+      
+      </div>
+    </div>
+    <div v-else-if="!loading && !error">No products found.</div>
   </div>
 </template>
-
 <script>
-import CardComp from '@/components/CardComp.vue';
-
+import axios from 'axios';
 export default {
-  name: 'productsView',
-  components: {
-    CardComp,
-  },
-  computed: {
-    products() {
-      console.log('Computing products:', this.$store.state.products);
-      // Ensure the products exist, otherwise return an empty array to avoid undefined issues.
-      return this.$store.state.products;
-      
-    },
+  data() {
+    return {
+      products: [],
+      loading: false,
+      error: '',
+    };
   },
   methods: {
-    fetchProducts(){
-      this.$store.dispatch('fetchProducts');
-      console.log(`fetchProducts()`)
-      console.log('products')
-
-    }
+    async fetchProducts() {
+      this.loading = true;
+      try {
+        const response = await axios.get('https://capstone-main-1.onrender.com/product');
+        console.log('API response:', response);
+        this.products = response.data;
+      } catch (error) {
+        console.error('Error fetching products:', error);
+        this.error = error.message;
+      } finally {
+        this.loading = false;
+      }
+    },
   },
-  mounted() {
-    // Dispatch action to fetch products from the store.
+  created() {
     this.fetchProducts();
-    
   },
 };
 </script>
-
 <style scoped>
-
-.product-container {
-  width: 100%;
+.product-card {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1em;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4em;
   place-items: center;
+  align-items: center;
+  border: 2px red solid;
+}
+
+
+
+/* Make it responsive for 300px */
+@media (max-width: 900px) {
+  .product-card {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .product-card {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 /* Message when products are loading or empty */
@@ -80,4 +79,14 @@ export default {
   font-size: 1.2em;
   color: gray;
 }
+
+/* Add some basic styling to the product cards */
+.product-card > div {
+  background-color: #f7f7f7;
+  padding: 1em;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 </style>

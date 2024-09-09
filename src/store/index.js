@@ -7,17 +7,18 @@ import axios from 'axios'
 import {useCookies} from 'vue-cookies'
 
 
-axios.defaults.withCredentials = true
-axios.defaults.headers = $cookies.get('token')
+axios.defaults.withCredentials = true;
+axios.defaults.headers.common['Authorization'] = `Bearer ${$cookies.get('token')}`;
 
+const apiUrl = 'https://capstone-main-1.onrender.com'
 
 export default createStore({
   state: {
-    users: null,
-    user: null,
-    products: null,
-    recentProducts: null,
-    product: null
+    users: [],
+    user: {},
+    products: [],
+    recentProducts: [],
+    product: {}
   },
   getters: {
     singleProduct:(state)=>state.product
@@ -47,7 +48,7 @@ export default createStore({
 
     async fetchUser(info, id) {
       try {
-        const { result, msg } = await (await axios.get(`${''}user/${id}`)).data
+        const { result, msg } = await (await axios.get(`${'apiUrl'}user/${id}`)).data
         if (result) {
           info.commit('getUser', result)
         } else {
@@ -143,20 +144,35 @@ export default createStore({
       }
     },
 
-
     async fetchProducts(info) {
       try {
-        const { results } = await (await axios.get(`${'https://capstone-main-1.onrender.com'}/product`)).data
+        const response = await axios.get('https://capstone-main-1.onrender.com/product');
+        console.log('API Response:', response.data); // Log the entire response
+        const { results } = response.data;
         if (results) {
-          info.commit('getProducts', results)
-          console.log('if no products render issue')
+          info.commit('getProducts', results);
         } else {
-          router.push({ name: 'login' })
+          // router.push({ name: 'login' });
         }
       } catch (error) {
-        console.error('Error fetching items:', error)
+        console.error('Error fetching items:', error);
       }
     },
+    
+    // async fetchProducts(info) {
+    //   try {
+    //     const { results } = await (await axios.get(`${apiUrl}/product`)).data
+    //     if (results) {
+    //       info.commit('getProducts', results)
+    //       console.log('if no products render issue')
+    //     } else {
+    //       // router.push({ name: 'login' })
+    //       console.log('LOginin')
+    //     }
+    //   } catch (error) {
+    //     console.error('Error fetching items:', error)
+    //   }
+    // },
  
  
     async fetchProduct(info, id) {
