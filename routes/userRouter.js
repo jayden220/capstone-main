@@ -19,15 +19,10 @@ userRouter.post('/login', verifyAToken,checkUser)
 userRouter.post('/logout')
 
 userRouter.get('/carts', fetchCarts ) 
-
 userRouter.get('/:id/cart',fetchuserCart )
-
 userRouter.post('/:id/cart', fetchaddUserCart ) 
-
 userRouter.patch('/:id/cart/:productID', fetchupdateUserCart)
-
 userRouter.delete('/:id/cart', deleteCart) 
-
 userRouter.delete('/:id/cart/:productID', deleteItem)
 
 

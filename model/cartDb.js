@@ -1,4 +1,4 @@
-import {pool as db } from '../config/config.js'
+import {pool} from '../config/config.js'
 
 const fetchCarts = (req, res) => {
   try {
@@ -12,7 +12,7 @@ const fetchCarts = (req, res) => {
       JOIN products p ON c.prodID = p.productID
       group by c.userID;
     `
-    db.query(strQry, (err, results) => {
+    pool.query(strQry, (err, results) => {
       if (err) throw new Error('Unable to fetch all carts')
       res.json({
         status: res.statusCode,
@@ -40,7 +40,7 @@ const fetchuserCart = (req, res) => {
       JOIN products p ON c.productID = p.productID
       WHERE c.userID = ?;
     `
-    db.query(strQry, [req.params.id], (err, results) => {
+    pool.query(strQry, [req.params.id], (err, results) => {
       if (err) throw new Error(err)
       res.json({
         status: res.statusCode,
@@ -62,7 +62,7 @@ const fetchaddUserCart = (req, res) => {
       (userID, productID, quantity)
       VALUES (?, ?, ?);
     `
-    db.query(strQry, [req.params.id, req.body.productID, req.body.quantity], (err, results) => {
+    pool.query(strQry, [req.params.id, req.body.productID, req.body.quantity], (err, results) => {
       if (err) throw new Error(err)
       res.json({
         status: res.statusCode,
@@ -84,7 +84,7 @@ const fetchupdateUserCart = (req, res) => {
       SET quantity = ?
       WHERE productID = ? AND userID = ?;
     `
-    db.query(strQry, [req.body.quantity, req.params.productID, req.params.id], (err, results) => {
+    pool.query(strQry, [req.body.quantity, req.params.productID, req.params.id], (err, results) => {
       if (err) throw new Error('Unable to update cart')
       res.json({
         status: res.statusCode,
@@ -105,7 +105,7 @@ const deleteItem = (req, res) => {
       DELETE FROM Carts
       WHERE productID = ? AND userID = ?;
     `
-    db.query(strQry, [req.params.productID, req.params.id], (err) => {
+    pool.query(strQry, [req.params.productID, req.params.id], (err) => {
       if (err) throw new Error('Unable to delete item')
       res.json({
         status: res.statusCode,
@@ -126,7 +126,7 @@ const deleteCart = (req, res) => {
       DELETE FROM Carts
       WHERE userID = ?;
     `
-    db.query(strQry, [req.params.id], (err) => {
+    pool.query(strQry, [req.params.id], (err) => {
       if (err) throw new Error('Unable to delete this Cart')
       res.json({
         status: res.statusCode,
