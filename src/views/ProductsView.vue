@@ -1,12 +1,13 @@
+/* eslint-disable */
 <template>
   <h1>hi</h1>
   <div class="product-container">
 
-    <div v-if="!products || products.length === 0" class="loading-message">
+    <!-- <div v-if="!products || products.length === 0" class="loading-message">
       Loading products or no products available...
-    </div>
+    </div> -->
 
-    <card-comp v-for="product in products" :key="product.productID">
+    <card-comp v-for="product in products" :key="product">
 
       <template #cardHeader>
         <img :src="product.productUrl || 'default-image-url.jpg'" loading="lazy" class="img-fluid" :alt="product.productName || 'Product Image'" />
@@ -41,21 +42,30 @@ export default {
   },
   computed: {
     products() {
+      console.log('Computing products:', this.$store.state.products);
       // Ensure the products exist, otherwise return an empty array to avoid undefined issues.
-      return this.$store.state.products || [];
+      return this.$store.state.products;
+      
     },
+  },
+  methods: {
+    fetchProducts(){
+      this.$store.dispatch('fetchProducts');
+      console.log(`fetchProducts()`)
+      console.log('products')
+
+    }
   },
   mounted() {
     // Dispatch action to fetch products from the store.
-    this.$store.dispatch('fetchProducts').catch(error => {
-      console.error('Error fetching products:', error);
-    });
+    this.fetchProducts();
+    
   },
 };
 </script>
 
 <style scoped>
-/* Ensure the product grid displays properly */
+
 .product-container {
   width: 100%;
   display: grid;

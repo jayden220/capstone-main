@@ -1,8 +1,14 @@
+/* eslint-disable */
 import { createStore } from 'vuex'
-import { toast } from 'toastify'
+import { toast } from 'vue3-toastify'
 import router from '@/router'
 import 'vue3-toastify/dist/index.css'
 import axios from 'axios'
+import {useCookies} from 'vue-cookies'
+
+
+axios.defaults.withCredentials = true
+axios.defaults.headers = $cookies.get('token')
 
 
 export default createStore({
@@ -140,17 +146,15 @@ export default createStore({
 
     async fetchProducts(info) {
       try {
-        const { results } = await (await axios.get(`${'https://capstone-main-1.onrender.com'}`)).data
+        const { results } = await (await axios.get(`${'https://capstone-main-1.onrender.com'}/product`)).data
         if (results) {
           info.commit('getProducts', results)
+          console.log('if no products render issue')
         } else {
           router.push({ name: 'login' })
         }
-      } catch (e) {
-        toast.error(`${e.message}`, {
-          autoClose: 2000,
-          position: toast.POSITION.TOP_CENTER
-        })
+      } catch (error) {
+        console.error('Error fetching items:', error)
       }
     },
  
@@ -166,11 +170,8 @@ export default createStore({
             position: toast.POSITION.TOP_CENTER
           })
         }
-      } catch (e) {
-        toast.error(`${e.message}`, {
-          autoClose: 2000,
-          position: toast.POSITION.TOP_CENTER
-        })
+      } catch (error) {
+        console.error('Error fetching items:', error)
       }
     },
     async addAProduct({ dispatch }, payload) {
@@ -184,11 +185,8 @@ export default createStore({
             position: toast.POSITION.TOP_CENTER
           })
         }
-      } catch (e) {
-        toast.error(`${e.message}`, {
-          autoClose: 2000,
-          position: toast.POSITION.TOP_CENTER
-        })
+      } catch (error) {
+        console.error('Error fetching items:', error)
       }
     },
     async updateProduct(info, payload) {
@@ -203,11 +201,8 @@ export default createStore({
             position: toast.POSITION.TOP_CENTER
           })
         }
-      } catch (e) {
-        toast.error(`${e.message}`, {
-          autoClose: 2000,
-          position: toast.POSITION.TOP_CENTER
-        })
+      } catch (error) {
+        console.error('Error updating items:', error)
       }
     },
     async deleteProduct(info, id) {
@@ -222,15 +217,29 @@ export default createStore({
             position: toast.POSITION.TOP_CENTER
           })
         }
-      } catch (e) {
-        toast.error(`${e.message}`, {
-          autoClose: 2000,
-          position: toast.POSITION.TOP_CENTER
-        })
+      } catch (error) {
+        console.error('Error deleting product', error)
       }
+    },
+    async loginUser({ commit }, info) {
+      console.log(info);
+      let { data } = await axios.post(`${'https://capstone-main-1.onrender.com'}user/login`, info);
+      console.log(data);
+      $cookies.set('token', data.token);
+      if (data.message) {
+        toast("Logged In Successfully", {
+          "theme": "dark",
+          "type": "default",
+          "position": "top-center",
+          "dangerouslyHTMLString": true
+        });
+      }
+      // Remove the router.push and location.reload() from here
     }
 
+
   },
+
   
   modules: {
     
