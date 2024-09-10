@@ -1,225 +1,127 @@
 <template>
-  
-<footer>
-        <div class="sectionContainer footer__container">
-          <div class="footer__col">
-            <h4>Our Products</h4>
-            <ul class="footer__links">
-              <li><a href="#">C</a></li>
-              <li><a href="#">R</a></li>
-              <li><a href="#">P</a></li>
-              <li><a href="#">F</a></li>
-              <li><a href="#">P</a></li>
-            </ul>
-          </div>
-          <div class="footer__col">
-            <h4>Biltog</h4>
-              
-          </div>
-          <div class="footer__col">
-            <h4>Resources</h4>
-            <ul class="footer__links">
-              <li><a href="#">Download</a></li>
-              <li><a href="#">Help Centers</a></li>
-              <li><a href="#">Guides</a></li>
-              <li><a href="#">Partner Network</a></li>
-              <li><a href="#">Developer</a></li>
-            </ul>
-          </div>
-          <div class="footer__col">
-            <h4>Extras</h4>
-            <ul class="footer__links">
-              <li><a href="#">Purchase Deal</a></li>
-              <li><a href="#">Repair Shop</a></li>
-              <li><a href="#">View Booking</a></li>
-              <li><a href="#">Hire Companies</a></li>
-              <li><a href="#">New Offers</a></li>
-            </ul>
-          </div>
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Left Section: Store Info -->
+      <div class="footer-left">
+        <h2 class="fade-in-left">About Us</h2>
+        <p class="fade-in-left">We provide premium quality biltong, sourced locally and made with passion. Experience the authentic taste of Cape Town with every bite.</p>
+        
+        <h3 class="fade-in-left">Contact Us</h3>
+        <p class="fade-in-left">Email: info@biltongstore.com</p>
+        <p class="fade-in-left">Phone: +27 12 345 6789</p>
+        
+        <h3 class="fade-in-left">Operating Hours</h3>
+        <p class="fade-in-left">Mon-Fri: 8am - 6pm</p>
+        <p class="fade-in-left">Sat-Sun: 9am - 4pm</p>
+      </div>
+      
+      <!-- Right Section: Social Media & Icons -->
+      <div class="footer-right">
+        <h2 class="fade-in-left">Follow Us</h2>
+        <div class="social-icons bounce-icons">
+          <a href="#"><i class="fa fa-facebook">ddcc</i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
         </div>
-        <div class="section__container footer__bar">
-          <h4><a href="/"></a></h4>
-            <p class="lead">Saba Biltong &copy; <span id="currYear"></span></p>
-          <ul class="footer__socials">
-            <div class="parent">
-              <div class="child child-1">
-                <button class="button btn-1">
-                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="#1e90ff"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
-              </button>
-              </div>
-              <div class="child child-2">
-                <button class="button btn-2">
-              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512" fill="#ff00ff"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg></button>
-              </div>
-              <div class="child child-3">
-                <button class="button btn-3">
-              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></button>
-              </div>
-              <div class="child child-4">
-                <button class="button btn-4">
-              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512" fill="#4267B2"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg></button>
-              </div>
-              </div>
-          </ul>
-        </div>
-</footer>
+      </div>
+    </div>
+  </footer>
 </template>
 
 <script>
 export default {
-    name: "FooterComp",
+  name: 'FooterComponent',
 }
 </script>
-<style>
 
-footer {
-  background-color: #3e3b32; 
-  color: #f5f5f5; 
-  padding: 40px 20px;
+<style scoped>
+
+.footer {
+  background-color: #2c2a29;
+  color: white;
+  padding: 2em;
+  text-align: left;
 }
 
-.footer__container {
+.footer-container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
+  align-items: flex-start;
 }
 
-
-.footer__col {
-  flex: 1;
-  min-width: 200px;
-  margin-right: 20px;
-  margin-bottom: 20px;
+.footer-left, .footer-right {
+  flex-basis: 45%;
 }
 
-.footer__col h4 {
-  font-size: 20px;
-  margin-bottom: 15px;
-  color: #d1b99d; 
+.footer-left h2, .footer-right h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  position: relative;
 }
 
-.footer__links {
-  list-style: none;
-  padding: 0;
+/* Text Styling */
+.footer-left p, .footer-right .social-icons {
+  margin-bottom: 1em;
+  font-size: 1em;
 }
 
-.footer__links li {
-  margin-bottom: 10px;
+/* Social Icons */
+.footer-right .social-icons a {
+  color: white;
+  font-size: 1.5em;
+  margin-right: 15px;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.footer__links a {
-  text-decoration: none;
-  color: #f5f5f5; 
-  font-size: 16px;
+.footer-right .social-icons a:hover {
+  color: #ffcc00; /* Add hover effect color */
+  transform: scale(1.3);
 }
 
-.footer__links a:hover {
-  text-decoration: underline;
-
-}
-.footer__bar {
-  background-color: #2c2a21; 
-  color: #d1b99d;
-  text-align: center;
-  padding: 20px;
-}
-
-.footer__bar h4 {
-  margin: 0;
+/* Animations */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.footer__bar p.lead {
-  margin: 10px 0;
-  font-size: 16px;
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
 }
 
-.footer__bar ul.footer__socials {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
+/* Apply animations */
+.fade-in-left {
+  animation: fadeInLeft 1.5s ease;
 }
 
-.footer__bar ul.footer__socials li {
-  margin: 0 10px;
+.bounce-icons a {
+  animation: bounce 2s infinite;
 }
 
-.footer__bar ul.footer__socials a {
-  color: #d1b99d;
-  font-size: 24px;
-  text-decoration: none;
-}
-
-.footer__bar ul.footer__socials a:hover {
-  color: #f5f5f5; 
-}
-/* icons */
-
-.parent {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.child {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform-style: preserve-3d;
-  transition: all 0.8s linear;
-  border-radius: 50%;
-  margin: 0 5px;
-}
-
-.child:hover {
-  background-color: rgb(208, 98, 98);
-  background-position: -100px 100px, -100px 100px;
-  transform: rotate3d(0.5, 1, 0, 30deg);
-  transform: perspective(180px) rotateX(60deg) translateY(2px);
-  box-shadow: 0px 10px 10px rgb(1, 49, 182);
-}
-
-button {
-  border: none;
-  background-color: transparent;
-  font-size: 20px;
-}
-
-.button:hover {
-  width: inherit;
-  height: inherit;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translate3d(0px, 0px, 15px) perspective(180px) rotateX(-35deg) translateY(2px);
-  border-radius: 50%;
-}
-
-/* Responsive design adjustments */
+/* Responsive Styling */
 @media (max-width: 768px) {
-  .footer__container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .footer__col {
-    margin-right: 0;
-    width: 100%;
-    text-align: center;
-  }
-  
-  .footer__bar ul.footer__socials {
+  .footer-container {
     flex-direction: column;
   }
 
-  .footer__bar ul.footer__socials li {
-    margin: 10px 0;
+  .footer-left, .footer-right {
+    flex-basis: 100%;
+    margin-bottom: 1.5em;
   }
 }
+
 </style>
+

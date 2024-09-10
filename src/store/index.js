@@ -9,13 +9,13 @@ import {useCookies} from 'vue-cookies'
 
 axios.defaults.withCredentials = true;
 axios.defaults.headers.common['Authorization'] = `Bearer ${$cookies.get('token')}`;
-
+// const { cookies } = useCookies()
 const apiUrl = 'https://capstone-main-1.onrender.com'
 
 export default createStore({
   state: {
     users: [],
-    user: {},
+    user: null,
     products: [],
     recentProducts: [],
     product: {}
@@ -29,6 +29,9 @@ export default createStore({
     },
     getUsers(state,payload){
       state.users = payload
+    },
+    setUser(state, user){
+      state.user = user
     },
     getProduct(state,payload){
       state.product = payload
@@ -237,20 +240,30 @@ export default createStore({
         console.error('Error deleting product', error)
       }
     },
-    async loginUser({ commit }, info) {
-      console.log(info);
-      let { data } = await axios.post(`${'https://capstone-main-1.onrender.com'}user/login`, info);
-      console.log(data);
-      $cookies.set('token', data.token);
-      if (data.message) {
-        toast("Logged In Successfully", {
-          "theme": "dark",
-          "type": "default",
-          "position": "top-center",
-          "dangerouslyHTMLString": true
+    async loginUser({ commit }, payload) {
+      try {
+        const response = await axios.post(`${apiUrl}/user/login`, payload);
+        const data = response.data;
+        if (data.token) {
+          cookies.set('token', data.token);
+          toast.success("Logged In Successfully", {
+            autoClose: 2000,
+            position: toast.POSITION.TOP_CENTER
+          });
+          // Redirect user after successful login
+          router.push({ name: 'home' }); // Change 'home' to your desired route
+        } else {
+          toast.error(data.message, {
+            autoClose: 2000,
+            position: toast.POSITION.TOP_CENTER
+          });
+        }
+      } catch (error) {
+        toast.error(error.message, {
+          autoClose: 2000,
+          position: toast.POSITION.TOP_CENTER
         });
       }
-      // Remove the router.push and location.reload() from here
     }
 
 

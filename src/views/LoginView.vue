@@ -1,140 +1,200 @@
-<!-- <template>
-  <div>
-    <h1>dee</h1>
-    
-  </div>
-</template> -->
-
-
 <template>
-<!-- <form class="form">
-  <input placeholder="Enter your name" class="input" type="text">
-  <input placeholder="Enter your email" class="input" type="text">
-    <input placeholder="*********" class="input" type="password">
-
-  <button>Submit</button>
-</form> -->
-  <div class="login-container">
-    <h5>Login View</h5>
-    <div class="main-container">
-      <div class="head-container">
-        <div class="left-container">
-         
-        </div>
-        <div class="right-container">
-     
-        </div>
-      </div>
-      <form class="login-form" @submit.prevent="login">
-        <label for="username">Username:</label>
-        <input type="text" id="username" v-model="username" />
-        <br />
-        <label for="password">Password:</label>
-        <input type="password" id="password" v-model="password" />
-        <br />
-        <button type="submit">Login</button>
-      </form>
-    </div>
+  <div>
+    <form class="form" @submit.prevent="loginUser">
+      <p class="title">Welcome back</p>
+      <p class="message">Log in to purchase your favorite snax</p>
+      <label>
+        <input class="input" type="email" placeholder="" required v-model="payload.userEmail">
+        <span>Email</span>
+      </label>
+      <label>
+        <input class="input" type="password" placeholder="" required v-model="payload.userPass">
+        <span>Password</span>
+      </label>
+      <p class="page-link">
+        <span class="page-link-label">Forgot Password?</span>
+      </p>
+      <button class="submit">Log in</button>
+      <p class="signin">Don't have an account? <a href="/signup">Sign up</a></p>
+    </form>
   </div>
 </template>
 
+
 <script>
+import { useStore } from 'vuex'
+import { reactive } from 'vue'
+
 export default {
   name: "loginView",
-  data() {
+
+ setup() {
+    const store = useStore()
+   
+    const payload = reactive({
+      userEmail: '',
+      userPass: ''
+    })
+
+    const loginUser = async () => {
+      await store.dispatch('loginUser', payload)
+      console.log(('logged in '))
+      // Optionally handle redirect or other actions here if needed
+    }
+
     return {
-      username: "",
-      password: ""
-    };
-  },
-  methods: {
-    login() {
-      // TO DO: implement login logic here
-      console.log("Login button clicked!");
+      payload,
+      loginUser
     }
   }
-};
+}
 </script>
 
-<style>
-.login-container {
+<style scoped>
+.form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 10px;
+  max-width: 350px;
   padding: 20px;
-} 
-
-.main-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.head-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.left-container {
-  height: 2em;
-  width: 2em;
-  background-color: black;
-  margin-right: 10px;
-}
-
-.right-container {
-  margin-left: 10px;
-}
-
-.login-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.login-form label {
-  margin-bottom: 10px;
-}
-
-.login-form input {
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-}
-.login-form button[type="submit"] {
-  background-color: #4CAF50;
+  border-radius: 20px;
+  position: relative;
+  background-color: #1a1a1a;
   color: #fff;
-  padding: 10px 20px;
-  border: none;
+  border: 1px solid #333;
+  margin: 0 auto;
+  margin-top: 3em;
+  margin-bottom: 10em;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: #00bfff;
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: #00bfff;
+}
+
+.message, 
+.signin {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a {
+  color: #00bfff;
+}
+
+.signin a:hover {
+  text-decoration: underline;
+}
+
+.form label {
+  position: relative;
+}
+
+.input {
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+  padding: 20px 05px 05px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
   border-radius: 10px;
+}
+
+.input + span {
+  color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.input:placeholder-shown + span {
+  top: 12.5px;
+  font-size: 0.9em;
+}
+
+.input:focus + span,
+.input:valid + span {
+  color: #00bfff;
+  top: 0px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+  background-color: #00bfff;
+}
+
+.submit:hover {
+  background-color: #00bfff96;
+}
+
+.page-link {
+  text-decoration: underline;
+  margin: 0;
+  text-align: end;
+  color: #747474;
+}
+
+.page-link-label {
   cursor: pointer;
+  font-size: 9px;
+  font-weight: 700;
 }
 
-.login-form button[type="submit"]:hover {
-  background-color: #3e8e41;
+.page-link-label:hover {
+  color: #000;
 }
 
-@media (max-width: 768px) {
-  .main-container {
-    flex-direction: column;
-    align-items: center;
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
   }
-  .head-container {
-    flex-direction: column;
-    align-items: center;
+  to {
+    transform: scale(1.8);
+    opacity: 0;
   }
-  .login-form {
-    width: 100%;
-  }
-} 
-
-
+}
 </style>

@@ -76,7 +76,7 @@ export default {
   height: 43.5em;
 } */
 .img1 {
-    width: 100%; /* Set the maximum width to 100% of its parent container */
+    width: 10em; /* Set the maximum width to 100% of its parent container */
     height: 99.98vh; /* Set the height to auto to maintain the aspect ratio */
     object-fit: cover; /* Scale the image to cover the entire container */
      /* Add some margin for better visibility */
@@ -84,7 +84,7 @@ export default {
      /* Add a border radius for a rounded corner effect */
   }
   .img2{
-    width: 120%; /* Set the maximum width to 100% of its parent container */
+    width: 10em; /* Set the maximum width to 100% of its parent container */
     height: 100vh; /* Set the height to auto to maintain the aspect ratio */
     object-fit: cover;
   }
@@ -142,8 +142,8 @@ export default {
   margin-top: 4.5em;
 }
 .landing3{
-  /* margin-top: 3em; */
-  height: 3vh;
+  margin-top: 8em;
+  height: 50vh;
   background: rgb(142, 70, 31);
   
 }
@@ -154,11 +154,11 @@ export default {
   .left-content {
      flex-flow:wrap ; 
      justify-content: flex-end;
-     margin: 2em 0 ;
+     margin: 5em 0 ;
      text-align: center; 
   }
   .content2{
-  margin-left: 1.5em;
+  /* margin-left: 1.5em; */
   color: aqua;
   display: flex;
   justify-content: space-evenly;
@@ -171,6 +171,7 @@ export default {
  margin: 2em auto
 } */
 .content2 p {
+  margin: 5em 0;
   padding: 15px;
   text-align: left;
   /* border-bottom: 1px solid #ddd; */
@@ -182,9 +183,13 @@ export default {
 
 .img2{
   height: 80vh;
-  width: 95cqi;
+  width: 100cqi;
 
   /* margin: 0 auto; */
+}
+.content3{
+  align-items: center;
+  text-align: center;
 }
 }
 @media (max-width: 1025px){
@@ -204,15 +209,17 @@ export default {
     height: 60vh;
   }
   .landing2 {
-    height: 85vh;
+    height: 138vh;
     margin: 0 0 0 0; 
-  }
-  .content2{
-    margin: 0 0 0 0;
+    background-color:#c15144;
   }
 
+
   .landing3 {
-    height: 60vh; 
+    height: 100vh; 
+    margin: 0 0;
+    background-color:#c15144;
+
   }
   .img1{
     height: 60vh;
