@@ -1,6 +1,6 @@
 import express from 'express'
 import bodyParser from 'body-parser';
-import { getUsers,getUser,addUser,deleteUser,updateUser } from '../controller/userController.js';
+import { getUsers,getUser,addUser,deleteUser,updateUser,loginUser } from '../controller/userController.js';
 import { verifyAToken,checkUser } from '../middleware/authenticate.js';
 
 import { fetchCarts, fetchuserCart, fetchadduserCart, fetchupdateUserCart, deleteItem, deleteCart } from '../model/cartDb.js';
@@ -15,7 +15,7 @@ userRouter.get('/singleUser/:id', getUser)
 userRouter.post('/register',addUser)
 userRouter.patch('/:id',updateUser)
 userRouter.delete('/:id',deleteUser)
-userRouter.post('/login', verifyAToken,checkUser)
+userRouter.post('/login', checkUser,loginUser)
 userRouter.post('/logout')
 
 userRouter.get('/carts', fetchCarts ) 
