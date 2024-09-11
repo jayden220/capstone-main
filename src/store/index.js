@@ -78,7 +78,7 @@ export default createStore({
 
     async fetchUsers(info) {
       try {
-        const { results, msg } = await (await axios.get(`${'https://capstone-main-1.onrender.com'}user`)).data
+        const { results, msg } = await (await axios.get(`https://capstone-main-1.onrender.com/user`)).data
         if (results) {
           info.commit('getUsers', results)
         } else {
@@ -96,14 +96,14 @@ export default createStore({
     },
     async addUser({ dispatch }, payload) {
       try {
-        const { msg, err, token } = await (await axios.post(`${'https://capstone-main-1.onrender.com'}user/register`, payload)).data
+        const { msg, err, token } = await (await axios.post(`https://capstone-main-1.onrender.com/user/register`, payload)).data
         if (token) {
           dispatch('fetchUsers')
           toast.success(`${msg}`, {
             autoClose: 2000,
             position: toast.POSITION.TOP_CENTER
           })
-          // router.push({ name: 'login' })
+          router.push({ name: 'login' })
         } else {
           toast.error(`${err}`, {
             autoClose: 2000,
@@ -111,10 +111,11 @@ export default createStore({
           })
         }
       } catch (e) {
-        toast.error(`${e.message}`, {
+        console.error("Registration error:", e.response ? e.response.data : e.message);
+        toast.error(`${e.response ? e.response.data.err : e.message}`, {
           autoClose: 2000,
           position: toast.POSITION.TOP_CENTER
-        })
+        });
       }
     },
     async updateUser(info, payload) {

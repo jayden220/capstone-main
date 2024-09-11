@@ -21,10 +21,10 @@
           <td class="contents">
             <button @click="decreaseQuantity(item.productID)">-</button>
             <span>{{ item.quantity }}</span>
-            <button @click="addToCart(item)">+</button>
+            <button @click="increaseQuantity(item)">+</button>
           </td>
-          <td class="contents">{{ item.productPrice }}</td>
-          <td class="contents">{{ (item.productPrice * item.quantity).toFixed(2) }}</td>
+          <td class="contents">R{{ item.productPrice.toFixed(2) }}</td>
+          <td class="contents">R{{ (item.productPrice * item.quantity).toFixed(2) }}</td>
           <td class="contents">
             <button @click="removeFromCart(item.productID)">×</button>
           </td>
@@ -40,19 +40,62 @@
 </template>
 
 <script>
-import { useCart } from ''
+import { computed } from 'vue';
+import { useCart } from '../composables/cartFunctions.js';
 
 export default {
   name: 'checkoutView',
-  components: {
-    
-  },
-  setup(){
-    const { cart , removeFromCart } = useCart();
-    return { cart, removeFromCart }
-  }
+  setup() {
+    const { cart, addToCart, removeFromCart } = useCart();
 
-}
+    // Computed property to get the cart items
+    const cartItems = computed(() => cart.value);
+
+    // Computed property to calculate the total price
+    const cartTotal = computed(() => {
+      return cart.value.reduce((total, item) => total + (item.productPrice * item.quantity), 0);
+    });
+
+    // Method to increase item quantity
+    const increaseQuantity = (item) => {
+      addToCart(item); // Reuses the addToCart function to increase quantity
+    };
+
+    // Method to decrease item quantity
+    const decreaseQuantity = (productID) => {
+      const product = cart.value.find((item) => item.productID === productID);
+      if (product) {
+        if (product.quantity > 1) {
+          product.quantity -= 1;
+        } else {
+          removeFromCart(productID);
+        }
+      }
+    };
+
+    // Method to clear the cart
+    const clearCart = () => {
+      cart.value = [];
+      localStorage.removeItem('cart'); // Remove cart from localStorage
+    };
+
+    // Method for checkout (implement as needed)
+    const checkout = () => {
+      // Implement checkout logic
+      alert('Checkout functionality is not implemented yet.');
+    };
+
+    return {
+      cartItems,
+      cartTotal,
+      increaseQuantity,
+      decreaseQuantity,
+      removeFromCart,
+      clearCart,
+      checkout,
+    };
+  },
+};
 </script>
 
 <style>

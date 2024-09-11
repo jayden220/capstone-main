@@ -11,16 +11,33 @@
         <p>{{ product.productDes }}</p>
         <p>Price: R{{ product.productPrice }}</p>
         <p>Stock: {{ product.weight }}</p>
-        <button>add to cart</button>
-      
+        <button @click="addToCart(product)">
+          {{ isInCart(product) ? 'Added' : 'Add to Cart' }}
+        </button>
       </div>
     </div>
     <div v-else-if="!loading && !error">No products found.</div>
   </div>
 </template>
+
 <script>
 import axios from 'axios';
+import { useCart } from '@/composables/cartFunctions'; 
+
 export default {
+  setup() {
+    const { addToCart, cart } = useCart();
+
+    // Method to check if a product is in the cart
+    const isInCart = (product) => {
+      return cart.value.some((item) => item.productID === product.productID);
+    };
+
+    return {
+      addToCart,
+      isInCart,
+    };
+  },
   data() {
     return {
       products: [],

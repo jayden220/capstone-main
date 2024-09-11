@@ -1,6 +1,6 @@
 <template>
     <div>
-      <form class="form" @submit.prevent="handleSubmit">
+      <form class="form" @submit.prevent="handleSubmit()">
         <p class="title">Register</p>
         <p class="message">Signup now and purchase your favourite snax</p>
         <div class="flex">
@@ -64,7 +64,7 @@
   };
   </script>
 <style scoped>
-/* From Uiverse.io by ammarsaa */ 
+
 .form {
   display: flex;
   flex-direction: column;
