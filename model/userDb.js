@@ -1,5 +1,6 @@
 import { pool } from "../config/config.js";
-import { hash } from "bcrypt";
+import { hash,compare } from "bcrypt";
+import { createToken } from "../middleware/authenticate.js";
 
 const fetchUsersDb = async() => {
     try {
@@ -80,47 +81,92 @@ const deleteUserDb = async (userID) => {
       return { message: 'Error updating user' };
     }
 };
-const loginUserDb = async (req, res) => {
+
+
+
+// const loginUserDb = async (userEmail, userPass) => {
+//   try {
+     
+//       const query = `SELECT userID, userCell, userEmail,userPass FROM Users WHERE userEmail = ?;`;
+//       const values = [userEmail];
+      
+
+//       const [rows] = await pool.query(query, values);
+      
+ 
+//       if (rows.length === 0) {
+//           return res.status(401).json({
+//               status: 401,
+//               msg: 'Invalid email address.'
+//           });
+//       }
+      
+
+//       const isValidPass = await compare(userPass, rows[0].userPass);
+//       if (isValidPass) {
+//           const token = createToken({
+//               userEmail,
+//               userPass
+//           });
+//           return res.status(200).json({
+//               status: 200,
+//               token,
+//               user: rows[0]
+//           });
+//       } else {
+//           return res.status(401).json({
+//               status: 401,
+//               msg: 'Invalid password.'
+//           });
+//       }
+//   } catch (error) {
+//       console.error("Error during login:", error);
+//       return res.status(500).json({
+//           status: 500,
+//           msg: `Error during login: ${error.message}`
+//       });
+//   }
+// };
+const loginUserDb = async (userEmail, userPass) => {
   try {
-      const { userEmail, userPass } = req.body;
-      const query = `SELECT userID, userCell, userEmail,userPass FROM Users WHERE userEmail = ?;`;
-      const values = [emailAdd];
-      
-      // Execute the query
-      const [rows] = await pool.query(query, values);
-      
-      // Check if user exists
-      if (rows.length === 0) {
-          return res.status(401).json({
-              status: 401,
-              msg: 'Invalid email address.'
-          });
-      }
-      
-      // Check if password is valid
-      const isValidPass = await compare(userPass, rows[0].userPass);
-      if (isValidPass) {
-          const token = createToken({
-              userEmail,
-              userPass
-          });
-          return res.status(200).json({
-              status: 200,
-              token,
-              user: rows[0]
-          });
-      } else {
-          return res.status(401).json({
-              status: 401,
-              msg: 'Invalid password.'
-          });
-      }
-  } catch (error) {
-      console.error("Error during login:", error);
-      return res.status(500).json({
-          status: 500,
-          msg: `Error during login: ${error.message}`
+    const query = `SELECT userID, userName, userEmail, userCell, userPass FROM users WHERE userEmail = ?;`;
+    const values = [userEmail];
+
+    const [rows] = await pool.query(query, values);
+
+    if (rows.length === 0) {
+      return {
+        status: 401,
+        msg: 'Invalid email address.',
+      };
+    }
+
+    const isValidPass = await compare(userPass, rows[0].userPass);
+
+    if (isValidPass) {
+      const token = createToken({
+        userEmail,
+        userPass,
       });
+
+      return {
+        status: 200,
+        token,
+        user: rows[0],
+        msg: 'Successfully logged in',
+      };
+    } else {
+      return {
+        status: 401,
+        msg: 'Invalid password.',
+      };
+    }
+  } catch (error) {
+    console.error('Error during login:', error);
+    return {
+      status: 500,
+      msg: `Error during login: ${error.message}`,
+    };
   }
 };
 

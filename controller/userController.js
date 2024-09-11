@@ -26,23 +26,23 @@ const getUser = async (req, res) => {
 };
 
 
-// const addUser = async (req, res) => {
-//     try {
-//       console.log("Request Body:", req.body); 
+const addUser = async (req, res) => {
+    try {
+      console.log("Request Body:", req.body); 
   
-//       const { userName, userEmail, userCell, userPass, userProfile, userRole } = req.body;
-//       const newuser = await addUserDb(userName, userEmail, userCell, userPass, userProfile, userRole);
+      const { userName, userEmail, userCell, userPass, userProfile, userRole } = req.body;
+      const newuser = await addUserDb(userName, userEmail, userCell, userPass, userProfile, userRole);
       
-//       res.status(200).json(newuser);
-//     } catch (error) {
-//       console.error(error);
-//       res.status(500).json({ message: 'Failed to add user', error: error.message });
-//     }
-//   };
+      res.status(200).json(newuser);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Failed to add user', error: error.message });
+    }
+  };
 
-  const addUser = async (req,res)=>{
-    let {userName, userEmail, userCell, userPass, userProfile, userRole,Userpass}=req.body
-    let hashedP = await hash(password,10)
+  // const addUser = async (req,res)=>{
+  //   let {userName, userEmail, userCell, userPass, userProfile, userRole,Userpass}=req.body
+  //   let hashedP = await hash(password,10)
     //if(hashedP.stack) throw hashedP //to account for not using err handling
     // // Below uses error handling and call back funct
     // hash(password,10,async (err, hashedP)=>{
@@ -50,9 +50,9 @@ const getUser = async (req, res) => {
     //     console.log(hashedP)
     //     await insertUserDb(name,surname,age,code,car,color,username,hashedP)
     // })
-    res.json({message:"User created successfully"})
+    // res.json({message:"User created successfully"})
     // await insertUserDb(name,surname,age,code,car,color,username,hashedP)
-}
+// }
   
 
 const deleteUser = async (req, res) => {
