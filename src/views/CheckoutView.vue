@@ -1,64 +1,57 @@
 <template>
-  <!-- <NavBarComp/> -->
   <div class="cart-container">
     <h1 class="cart-title">MY CART</h1>
     <table class="cart-table">
       <thead class="table-headings">
         <tr>
-          <th class="contents car-item">Item</th>
-          <th class="contents car-description">Description</th>
-          <th class="contents car-quantity">Quantity</th>
-          <th class="contents car-price">Price</th>
-          <th class="contents car-total">Total</th>
-          <th class="contents clear-cart"><button class="clear-cart-button">Clear</button></th>
+          <th class="contents">Item</th>
+          <th class="contents">Description</th>
+          <th class="contents">Quantity</th>
+          <th class="contents">Price</th>
+          <th class="contents">Total</th>
+          <th class="contents">Actions</th>
         </tr>
       </thead>
-      <tbody class="showBought">
-        <!-- Your dynamic rows will be added here -->
-        <!-- Example row -->
-        <tr>
+      <tbody>
+        <tr v-for="item in cartItems" :key="item.productID">
           <td class="contents">
-            <img src="path-to-image" alt="Item Image" class="item-image">
+            <img :src="item.productUrl" alt="Item Image" class="item-image">
           </td>
-          <td class="contents">Almonds Raw CSSR Great Value 450g<br>12930</td>
+          <td class="contents">{{ item.productName }}</td>
           <td class="contents">
-            <button class="quantity-button">-</button>
-            <span class="quantity-value">1</span>
-            <button class="quantity-button">+</button>
+            <button @click="decreaseQuantity(item.productID)">-</button>
+            <span>{{ item.quantity }}</span>
+            <button @click="addToCart(item)">+</button>
           </td>
-          <td class="contents">R114.90</td>
-          <td class="contents">R114.90</td>
+          <td class="contents">{{ item.productPrice }}</td>
+          <td class="contents">{{ (item.productPrice * item.quantity).toFixed(2) }}</td>
           <td class="contents">
-            <button class="remove-item-button">×</button>
+            <button @click="removeFromCart(item.productID)">×</button>
           </td>
         </tr>
       </tbody>
     </table>
-
     <div class="cart-footer">
-      <button class="continue-shopping-button">Continue Shopping</button>
-      <div class="summary-box">
-        <h4 class="summary-title">Summary</h4>
-        <p class="summary-total-label">Total:</p>
-        <p class="summary-total-value">R114.90</p>
-        <div class="promo-code-section">
-          <input type="text" placeholder="Promo Code" class="promo-code-input">
-          <button class="apply-promo-button">Apply</button>
-        </div>
-        <button class="checkout-button">Checkout Now</button>
-      </div>
+      <p>Total: R{{ cartTotal.toFixed(2) }}</p>
+      <button @click="clearCart">Clear Cart</button>
+      <button @click="checkout">Checkout</button>
     </div>
   </div>
 </template>
 
-
 <script>
-// import NavBarComp from '@/components/NavBarComp.vue';
+import { useCart } from ''
+
 export default {
-    name: 'checkoutView',
+  name: 'checkoutView',
   components: {
     
+  },
+  setup(){
+    const { cart , removeFromCart } = useCart();
+    return { cart, removeFromCart }
   }
+
 }
 </script>
 

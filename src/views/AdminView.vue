@@ -29,7 +29,7 @@
     </div>
   </div>
 </div>
-  <!-- <button type="button" @click.prevent="updateUser(JSON.stringify(user.userID))">Save changes</button> -->
+
 </template>
 
 <script>

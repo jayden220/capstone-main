@@ -18,11 +18,18 @@ export default createStore({
     user: null,
     products: [],
     recentProducts: [],
-    product: {}
+    product: {},
+    cart: []
   },
   getters: {
-    singleProduct:(state)=>state.product
-  },
+    singleProduct:(state)=>state.product,
+    singleProduct: (state) => state.product,
+    cartItems: (state) => state.cart, // Get cart items from the state
+    cartTotal: (state) => {
+        return state.cart.reduce((total, item) => total + (item.productPrice * item.quantity), 0);
+      
+  }
+},
   mutations: {
     getUser(state,payload){
       state.user = payload
