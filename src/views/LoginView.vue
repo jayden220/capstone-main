@@ -1,20 +1,20 @@
 <template>
   <div>
-    <form class="form" @submit.prevent="loginUser">
+    <form class="form" @submit.prevent="loginUser()">
       <p class="title">Welcome back</p>
       <p class="message">Log in to purchase your favorite snax</p>
       <label>
-        <input class="input" type="email" placeholder="" required v-model="payload.userEmail">
+        <input class="input" type="email" placeholder="" required v-model="userEmail">
         <span>Email</span>
       </label>
       <label>
-        <input class="input" type="password" placeholder="" required v-model="payload.userPass">
+        <input class="input" type="password" placeholder="" required v-model="userPass">
         <span>Password</span>
       </label>
       <p class="page-link">
         <span class="page-link-label">Forgot Password?</span>
       </p>
-      <button class="submit">Log in</button>
+      <button  class="submit">Log in</button>
       <p class="signin">Don't have an account? <a href="/signup">Sign up</a></p>
     </form>
   </div>
@@ -22,31 +22,28 @@
 
 
 <script>
-import { useStore } from 'vuex'
-import { reactive } from 'vue'
 
 export default {
   name: "loginView",
 
- setup() {
-    const store = useStore()
-   
-    const payload = reactive({
-      userEmail: '',
-      userPass: ''
-    })
-
-    const loginUser = async () => {
-      await store.dispatch('loginUser', payload)
-      console.log(('logged in '))
-      // Optionally handle redirect or other actions here if needed
-    }
-
-    return {
-      payload,
-      loginUser
-    }
+  methods:{
+    async loginUser() {
+        if (!this.userEmail || !this.userPass) {
+          console.log('Please fill in all fields');
+          return;
+        }
+        try {
+          await this.$store.dispatch('loginUser', {
+            userEmail: this.userEmail,
+            userPass: this.userPass
+          });
+          this.$router.push('/');
+        } catch (error) {
+          console.error('Login failed:', error);
+        }
+      }
   }
+  
 }
 </script>
 

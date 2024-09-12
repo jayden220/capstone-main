@@ -1,67 +1,108 @@
 <template>
+  <div>
+
+  </div>
     <div>
-      <form class="form" @submit.prevent="handleSubmit()">
+      <form class="form">
         <p class="title">Register</p>
         <p class="message">Signup now and purchase your favourite snax</p>
         <div class="flex">
           <label>
-            <input class="input" type="text" placeholder="" required v-model="payload.userName">
+            <input class="input" type="text" placeholder="" required v-model="userName">
             <span>Username</span>
           </label>
         </div>
         <label>
-          <input class="input" type="email" placeholder="" required v-model="payload.userEmail">
+          <input class="input" type="email" placeholder="" required v-model="userEmail">
           <span>Email</span>
         </label>
         <label>
-          <input class="input" type="text" placeholder="" required v-model="payload.userCell">
+          <input class="input" type="text" placeholder="" required v-model="userCell">
           <span>Cellphone</span>
         </label>
         <label>
-          <input class="input" type="password" placeholder="" required v-model="payload.userPass">
+          <input class="input" type="password" placeholder="" required v-model="userPass">
           <span>Password</span>
         </label>
-        <button class="submit" type="submit">Submit</button>
+        <label>
+          <input class="input" type="text" placeholder="" required v-model="userProfile">
+          <span>Profile</span>
+        </label>
+        <label>
+          <input class="input" type="text" placeholder="user" required v-model="userRole">
+          <span>Role</span>
+        </label>
+        <button @click="addUser()" class="submit" type="submit">Register</button>
         <p class="signin">Already have an account? <a href="/login">Log in</a></p>
       </form>
     </div>
   </template>
   
   <script>
-  import { mapActions } from 'vuex';
+
+
+  
+import { toast } from 'vue3-toastify'
   
   export default {
     name: "signupView",
-    data() {
-      return {
-        payload: {
-          userName: '',
-          userEmail: '',
-          userCell: '',
-          userPass: ''
-        }
-      };
-    },
-    methods: {
-      ...mapActions(['addUser']),
-      handleSubmit() {
-        this.addUser(this.payload)
-          .then(() => {
-            // Clear form after successful registration or redirect if needed
-            this.payload = {
-              userName: '',
-              userEmail: '',
-              userCell: '',
-              userPass: ''
-            };
-          })
-          .catch((error) => {
-            // Handle any additional error processing if needed
-            console.error('Error during registration:', error);
-          });
-      }
+//     data() {
+//       return {
+//           userName: '',
+//           userEmail: '',
+//           userCell: '',
+//           userPass: '',
+//           userProfile: '',
+//           userRole: ''
+//       };
+//     },
+//     methods: {
+//   addUser(event) {
+//     event.preventDefault();
+//     try {
+//       this.$store.dispatch('addUser', {
+//         userName: this.userName,
+//         userEmail: this.userEmail,
+//         userCell: this.userCell,
+//         userPass: this.userPass,
+//         userProfile: this.userProfile,
+//         userRole : this.userRole
+
+//       });
+//     } catch (error) {
+//       console.error('Error adding user:', error);
+//     }
+//     }
+//   }
+methods: {
+  addUser() {
+   
+    if (!this.userName || !this.userEmail || !this.userCell || !this.userPass || !this.userProfile || !this.userRole) {
+      toast.error("Please fill in all fields", {
+        theme: "dark",
+        type: "default",
+        position: "top-center",
+        dangerouslyHTMLString: true
+      });
+      return; 
+    }try {
+      this.$store.dispatch('addUser', {
+        userName: this.userName,
+        userEmail: this.userEmail,
+        userCell: this.userCell,
+        userPass: this.userPass,
+        userProfile: this.userProfile,
+        userRole: this.userRole
+      });
+      toast.success("User registered successfully!");
+      alert('User registered successfully!')
+    } catch (error) {
+      console.error('Error adding user:', error);
     }
-  };
+  }
+}
+
+}
   </script>
 <style scoped>
 

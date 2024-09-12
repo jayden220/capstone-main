@@ -7,6 +7,7 @@ import LoginView from '@/views/LoginView.vue'
 import AdminView from '@/views/AdminView.vue'
 import ProductView from '@/views/ProductView.vue'
 import SignupView from '@/views/SignupView.vue'
+import UserView from '@/views/UserView.vue'
 const routes = [
   {
     path: '/',
@@ -48,6 +49,11 @@ const routes = [
     path: '/Admin',
     name: 'admin',
     component: AdminView
+  },
+  {
+    path: '/Profile',
+    name: 'profile',
+    component: UserView
   },
   {
     path: '/about',

@@ -10,7 +10,7 @@
       
       <div class="land-right">
         <div class="right-content">
-          <img src="https://jayden220.github.io/capstone-images/packaged%20bilton%201718cf8b-c406-42bb-80ad-4e047101e4d1.png" class="img1">
+          <img src="https://jayden220.github.io/hostedImages/images/pexels-worldspectrum-1099298.jpg" class="img1">
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
 
       <div class="content2">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione at commodi doloremque ducimus, odio asperiores voluptatum. Neque at distinctio minima cumque, alias dolorum numquam repellendus sequi esse ab nesciunt ratione.</p>
-        <img src="https://jayden220.github.io/capstone-images/curry%20and%20bilto%20cb3f45ec-b273-4347-8376-1884f9ecd2f9.png" alt="" class="img2">
+        <img src="https://jayden220.github.io/hostedImages/images/67f247f0-c3c7-4212-9810-17554427a3d5%20(1).png" alt="" class="img2">
       </div>
     </div>
     <div class="landing3">
@@ -48,18 +48,30 @@ export default {
 .landing2{
   /* margin-top: 3em; */
   height: 110vh;
-  background: #c15144;
+  background: #1c0e02;
 }
-.landing3{
-  /* margin-top: 3em; */
+
+.landing3 {
+  width: 100%;
+  height: 100vh;
+  --color1: rgb(111, 66, 7);
+  --color2: #1c0e02;
+  background-color: var(--color1);
+  background-image: linear-gradient(45deg, var(--color2) 25%, transparent 25%, transparent 75%, var(--color2) 75%, var(--color2)), 
+                    linear-gradient(45deg, var(--color2) 25%, var(--color1) 25%, var(--color1) 75%, var(--color2) 75%, var(--color2));
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+}
+/* .landing3{
+
   height: 50vh;
-  background: #c15144;
+  background: #ffffff;
   display: flex;
   align-items: center;
-}
+} */
 .land-left{
-  background: #c15144;
-  color: antiquewhite;
+  background: rgb(111, 66, 7);
+  color: rgb(150, 92, 16);
   height: 100vh;
   width: 50%;
   display: flex;
@@ -76,7 +88,7 @@ export default {
   height: 43.5em;
 } */
 .img1 {
-    width: 10em; /* Set the maximum width to 100% of its parent container */
+    width: 100%; /* Set the maximum width to 100% of its parent container */
     height: 99.98vh; /* Set the height to auto to maintain the aspect ratio */
     object-fit: cover; /* Scale the image to cover the entire container */
      /* Add some margin for better visibility */
@@ -84,8 +96,8 @@ export default {
      /* Add a border radius for a rounded corner effect */
   }
   .img2{
-    width: 10em; /* Set the maximum width to 100% of its parent container */
-    height: 100vh; /* Set the height to auto to maintain the aspect ratio */
+    width: 108.4%; /* Set the maximum width to 100% of its parent container */
+    height: 110vh; /* Set the height to auto to maintain the aspect ratio */
     object-fit: cover;
   }
 

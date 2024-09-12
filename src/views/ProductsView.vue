@@ -65,19 +65,60 @@ export default {
   },
 };
 </script>
+
 <style scoped>
+.product-container {
+  background-color: #f4f4f4;
+  padding: 2em;
+  font-family: 'Times New Roman', serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #222;
+  margin-bottom: 1em;
+}
+
 .product-card {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 4em;
-  place-items: center;
-  align-items: center;
-  border: 2px red solid;
+  gap: 2em;
+  padding: 1.5em;
+  background-color: #fff;
+  border: 1px solid #222;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
+.product-card:hover {
+  background-color: #f0e4d7; /* Light wood-tone on hover */
+}
 
+.product-image {
+  width: 8em;
+  height: 8em;
+  border-radius: 50%;
+  border: 2px solid #222; /* Strong border like chess pieces */
+}
 
-/* Make it responsive for 300px */
+button {
+  background-color: #222;
+  color: #fff;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+/* Responsive layout for smaller screens */
 @media (max-width: 900px) {
   .product-card {
     grid-template-columns: repeat(2, 1fr);
@@ -90,20 +131,24 @@ export default {
   }
 }
 
-/* Message when products are loading or empty */
 .loading-message {
   text-align: center;
-  font-size: 1.2em;
-  color: gray;
+  font-size: 1.5em;
+  color: #555;
+  font-family: 'Times New Roman', serif;
 }
 
-/* Add some basic styling to the product cards */
+/* Basic styling for product descriptions */
 .product-card > div {
   background-color: #f7f7f7;
   padding: 1em;
   border: 1px solid #ddd;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.error {
+  color: red;
+  font-size: 1.2em;
+  margin-top: 1em;
+}
 </style>

@@ -34,6 +34,12 @@
                         <li class="nav-item">
                             <router-link class="nav-link" to="/signup">Register</router-link>
                         </li>
+                        <li class="nav-item">
+                            <router-link class="nav-link" to="/profile">icon</router-link>
+                        </li>
+                        <li class="nav-item">
+                            <button @click="$store.dispatch('logout')">Logout</button>
+                        </li>
                     </ul>
                 </ul>
             </div>
