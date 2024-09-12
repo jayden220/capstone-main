@@ -1,6 +1,7 @@
 import { pool } from "../config/config.js";
 import { hash,compare } from "bcrypt";
 import { createToken } from "../middleware/authenticate.js";
+import jwt from 'jsonwebtoken'
 
 const fetchUsersDb = async() => {
     try {
@@ -35,9 +36,7 @@ const addUserDb = async (userName, userEmail, userCell, userPass, userProfile, u
         VALUES (?, ?, ?, ?, ?, ?)
       `;
       const values = [userName, userEmail, userCell, hashedPassword, userProfile, userRole];
-  
       await pool.query(query, values);
-  
       return { message: 'Registered successfully' };
     } catch (error) {
       console.error("Error adding User:", error);
@@ -127,6 +126,51 @@ const deleteUserDb = async (userID) => {
 //       });
 //   }
 // };
+
+// const loginUserDb = async (userEmail, userPass) => {
+//   try {
+//     const query = `SELECT userID, userName, userEmail, userCell, userPass FROM users WHERE userEmail = ?;`;
+//     const values = [userEmail];
+
+//     const [rows] = await pool.query(query, values);
+
+//     if (rows.length === 0) {
+//       return {
+//         status: 401,
+//         msg: 'Invalid email address.',
+//       };
+//     }
+
+//     const isValidPass = await compare(userPass, rows[0].userPass);
+
+//     if (isValidPass) {
+//       const token = createToken({
+//         userEmail,
+//         userPass,
+//       });
+
+//       return {
+//         status: 200,
+//         token,
+//         user: rows[0],
+//         msg: 'Successfully logged in',
+//       };
+//     } else {
+//       return {
+//         status: 401,
+//         msg: 'Invalid password.',
+//       };
+//     }
+//   } catch (error) {
+//     console.error('Error during login:', error);
+//     return {
+//       status: 500,
+//       msg: `Error during login: ${error.message}`,
+//     };
+//   }
+// };
+ // Add this line to import the jwt library
+
 const loginUserDb = async (userEmail, userPass) => {
   try {
     const query = `SELECT userID, userName, userEmail, userCell, userPass FROM users WHERE userEmail = ?;`;
@@ -144,11 +188,13 @@ const loginUserDb = async (userEmail, userPass) => {
     const isValidPass = await compare(userPass, rows[0].userPass);
 
     if (isValidPass) {
-      const token = createToken({
-        userEmail,
-        userPass,
+      // Generate a JWT token with the user's email and a secret key
+      const token = jwt.sign({ userEmail }, process.env.SECRET_KEY, {
+        expiresIn: '1h',
+        // Token expires in 1 hour
       });
-
+      console.log(token);
+      
       return {
         status: 200,
         token,
@@ -169,7 +215,6 @@ const loginUserDb = async (userEmail, userPass) => {
     };
   }
 };
-
 
 
 export {fetchUsersDb,fetchUserDb,addUserDb,deleteUserDb,updateUserDb,loginUserDb}
