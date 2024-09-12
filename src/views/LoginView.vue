@@ -22,11 +22,26 @@
 
 
 <script>
-
+// import axios from 'axios'
 export default {
   name: "loginView",
+  data(){
+    return{
+      userEmail: '',
+      userPass:''
+    }
+  },
 
   methods:{
+    // async loginUser(){
+    //   const response = await axios.post('login',{
+    //     userEmail : this.userEmail,
+    //     userPass : this.userPass
+    //   })
+    //   console.log(response);
+      
+    
+
     async loginUser() {
         if (!this.userEmail || !this.userPass) {
           console.log('Please fill in all fields');

@@ -4,12 +4,13 @@ import { toast } from 'vue3-toastify'
 import router from '@/router'
 import 'vue3-toastify/dist/index.css'
 import axios from 'axios'
-import {useCookies} from 'vue-cookies'
+// import {useCookies} from 'vue-cookies'
 
 
 axios.defaults.withCredentials = true;
-axios.defaults.headers.common['Authorization'] = `Bearer ${$cookies.get('token')}`;
+// axios.defaults.headers.common['Authorization'] = `Bearer ${cookies.get('token')}`;
 // const { cookies } = useCookies()
+// useCookies()
 const apiUrl = 'https://capstone-main-1.onrender.com'
 
 export default createStore({
@@ -102,8 +103,8 @@ export default createStore({
       try {
         const response = await axios.post(`https://capstone-main-1.onrender.com/user/register`, user)
         const { data } = response
-        console.log('newdata', data) // log the entire data object to see what's being returned
-        if (data && data.message) { // check if data is not null and data.message is truthy
+        console.log('newdata', data)
+        if (data && data.message) { 
           toast.success("User Added Successfully", {
             theme: "dark",
             type: "default",
@@ -113,7 +114,7 @@ export default createStore({
           console.log(data);
           
         } else {
-          console.log('No message returned from API') // log a message if data.message is empty or null
+          console.log('No message returned from API') 
         }
       } catch (error) {
         console.log(error)
@@ -236,31 +237,31 @@ export default createStore({
         console.error('Error deleting product', error)
       }
     },
-    // async loginUser({ commit }, payload) {
-    //   try {
-    //     const response = await axios.post(`https://capstone-main-1.onrender.com/user/login`, payload);
-    //     const data = response.data;
-    //     if (data.token) {
-    //       cookies.set('token', data.token);
-    //       toast.success("Logged In Successfully", {
-    //         autoClose: 2000,
-    //         position: toast.POSITION.TOP_CENTER
-    //       });
-    //       // Redirect user after successful login
-    //       router.push({ name: 'home' }); // Change 'home' to your desired route
-    //     } else {
-    //       toast.error(data.message, {
-    //         autoClose: 2000,
-    //         position: toast.POSITION.TOP_CENTER
-    //       });
-    //     }
-    //   } catch (error) {
-    //     toast.error(error.message, {
-    //       autoClose: 2000,
-    //       position: toast.POSITION.TOP_CENTER
-    //     });
-    //   }
-    // },
+    async loginUser({ commit }, payload) {
+      try {
+        const response = await axios.post(`https://capstone-main-1.onrender.com/user/login`, payload);
+        const data = response.data;
+        if (data.token) {
+          cookies.set('token', data.token);
+          toast.success("Logged In Successfully", {
+            autoClose: 2000,
+            position: toast.POSITION.TOP_CENTER
+          });
+          // Redirect user after successful login
+          router.push({ name: 'home' }); // Change 'home' to your desired route
+        } else {
+          toast.error(data.message, {
+            autoClose: 2000,
+            position: toast.POSITION.TOP_CENTER
+          });
+        }
+      } catch (error) {
+        toast.error(error.message, {
+          autoClose: 2000,
+          position: toast.POSITION.TOP_CENTER
+        });
+      }
+    },
     // Local variable to track logout status
 
     async logout({ commit }) {
@@ -301,20 +302,20 @@ export default createStore({
     },
     
   
-    async loginUser({ commit }, info) {
-      console.log(info);
-      let { data } = await axios.post(`https://capstone-main-1.onrender.com/user/login`, info);
-      console.log(data);
-      $cookies.set('token', data.token);
-      if (data.message) {
-        toast("Logged In Successfully", {
-          "theme": "dark",
-          "type": "default",
-          "position": "top-center",
-          "dangerouslyHTMLString": true
-        });
-      }
-    }
+    // async loginUser({ commit }, info) {
+    //   console.log(info);
+    //   let { data } = await axios.post(`https://capstone-main-1.onrender.com/user/login`, info);
+    //   console.log(data);
+    //   $cookies.set('token', data.token);
+    //   if (data.message) {
+    //     toast("Logged In Successfully", {
+    //       "theme": "dark",
+    //       "type": "default",
+    //       "position": "top-center",
+    //       "dangerouslyHTMLString": true
+    //     });
+    //   }
+    // }
 
 
   },

@@ -18,8 +18,8 @@
 
       <div class="content2">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione at commodi doloremque ducimus, odio asperiores voluptatum. Neque at distinctio minima cumque, alias dolorum numquam repellendus sequi esse ab nesciunt ratione.</p>
-        <img src="https://jayden220.github.io/hostedImages/images/67f247f0-c3c7-4212-9810-17554427a3d5%20(1).png" alt="" class="img2">
       </div>
+      <img src="https://jayden220.github.io/hostedImages/images/67f247f0-c3c7-4212-9810-17554427a3d5%20(1).png" alt="" class="img2">
     </div>
     <div class="landing3">
       <div class="content3">
@@ -154,7 +154,7 @@ export default {
   margin-top: 4.5em;
 }
 .landing3{
-  margin-top: 8em;
+  margin-top: 8.5em;
   height: 50vh;
   background: rgb(142, 70, 31);
   
@@ -215,6 +215,7 @@ export default {
     width: 100%;
     height: auto;
     padding: 20px;
+    background-color: #150000;
   }
   .land-right{
     width: 100%;
@@ -226,13 +227,18 @@ export default {
     background-color:#c15144;
   }
 
-
   .landing3 {
-    height: 100vh; 
-    margin: 0 0;
-    background-color:#c15144;
-
-  }
+   margin-top: 0;
+  width: 100%;
+  height: 50vh;
+  --color1: rgb(111, 66, 7);
+  --color2: #1c0e02;
+  background-color: var(--color1);
+  background-image: linear-gradient(45deg, var(--color2) 25%, transparent 25%, transparent 75%, var(--color2) 75%, var(--color2)), 
+                    linear-gradient(45deg, var(--color2) 25%, var(--color1) 25%, var(--color1) 75%, var(--color2) 75%, var(--color2));
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+}
   .img1{
     height: 60vh;
     width: 100%;
@@ -248,6 +254,9 @@ export default {
   justify-content: flex-end;
   margin: 2em 0 ;
    text-align: center; 
+  }
+  .content2{
+    background: rgb(142, 70, 31);
   }
 }
 

@@ -122,6 +122,26 @@ export default {
     margin-bottom: 1.5em;
   }
 }
+@media (max-width: 430px) {
+    .footer-container {
+      flex-direction: column;
+      align-items: center; /* Center the content horizontally */
+    }
+
+    .footer-left, .footer-right {
+      flex-basis: 100%;
+      margin-bottom: 1.5em;
+      text-align: center; /* Center the text */
+    }
+
+    .footer-left h2, .footer-right h2 {
+      font-size: 1.2em; /* Reduce font size for better readability */
+    }
+
+    .footer-left p, .footer-right .social-icons {
+      font-size: 0.9em; /* Reduce font size for better readability */
+    }
+  }
 
 </style>
 
