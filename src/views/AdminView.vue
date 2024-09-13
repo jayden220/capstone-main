@@ -31,7 +31,7 @@
             <td>{{ product.productDes }}</td>
             <td>{{ product.weight }}</td>
             <td>
-              <button @click="openEditProductModal(product)" class="btn btn-warning">Edit</button>
+              <button  class="btn btn-warning">Edit</button>
               <button @click="deleteProduct(product.productID)" class="btn btn-danger">Delete</button>
             </td>
           </tr>
@@ -68,7 +68,7 @@
             <td>{{ user.userEmail }}</td>
             <td>{{ user.userRole }}</td>
             <td>
-              <button @click="openEditUserModal(user)" class="btn btn-warning">Edit</button>
+              <button  class="btn btn-warning">Edit</button>
               <button @click="deleteUser(user.userID)" class="btn btn-danger">Delete</button>
             </td>
           </tr>
