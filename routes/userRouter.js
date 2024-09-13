@@ -4,7 +4,7 @@ import { getUsers,getUser,addUser,deleteUser,updateUser,loginUser } from '../con
 import { createToken,verifyAToken} from '../middleware/authenticate.js';    
 import { fetchCarts, fetchuserCart, fetchadduserCart, fetchupdateUserCart, deleteItem, deleteCart } from '../model/cartDb.js';
 
-// const express = require('express')
+
 const userRouter = express.Router()
 
 userRouter.use(bodyParser.json());

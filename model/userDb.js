@@ -82,95 +82,6 @@ const deleteUserDb = async (userID) => {
 };
 
 
-
-// const loginUserDb = async (userEmail, userPass) => {
-//   try {
-     
-//       const query = `SELECT userID, userCell, userEmail,userPass FROM Users WHERE userEmail = ?;`;
-//       const values = [userEmail];
-      
-
-//       const [rows] = await pool.query(query, values);
-      
- 
-//       if (rows.length === 0) {
-//           return res.status(401).json({
-//               status: 401,
-//               msg: 'Invalid email address.'
-//           });
-//       }
-      
-
-//       const isValidPass = await compare(userPass, rows[0].userPass);
-//       if (isValidPass) {
-//           const token = createToken({
-//               userEmail,
-//               userPass
-//           });
-//           return res.status(200).json({
-//               status: 200,
-//               token,
-//               user: rows[0]
-//           });
-//       } else {
-//           return res.status(401).json({
-//               status: 401,
-//               msg: 'Invalid password.'
-//           });
-//       }
-//   } catch (error) {
-//       console.error("Error during login:", error);
-//       return res.status(500).json({
-//           status: 500,
-//           msg: `Error during login: ${error.message}`
-//       });
-//   }
-// };
-
-// const loginUserDb = async (userEmail, userPass) => {
-//   try {
-//     const query = `SELECT userID, userName, userEmail, userCell, userPass FROM users WHERE userEmail = ?;`;
-//     const values = [userEmail];
-
-//     const [rows] = await pool.query(query, values);
-
-//     if (rows.length === 0) {
-//       return {
-//         status: 401,
-//         msg: 'Invalid email address.',
-//       };
-//     }
-
-//     const isValidPass = await compare(userPass, rows[0].userPass);
-
-//     if (isValidPass) {
-//       const token = createToken({
-//         userEmail,
-//         userPass,
-//       });
-
-//       return {
-//         status: 200,
-//         token,
-//         user: rows[0],
-//         msg: 'Successfully logged in',
-//       };
-//     } else {
-//       return {
-//         status: 401,
-//         msg: 'Invalid password.',
-//       };
-//     }
-//   } catch (error) {
-//     console.error('Error during login:', error);
-//     return {
-//       status: 500,
-//       msg: `Error during login: ${error.message}`,
-//     };
-//   }
-// };
- // Add this line to import the jwt library
-
 const loginUserDb = async (userEmail, userPass) => {
   try {
     const query = `SELECT userID, userName, userEmail, userCell, userPass FROM users WHERE userEmail = ?;`;
@@ -188,10 +99,10 @@ const loginUserDb = async (userEmail, userPass) => {
     const isValidPass = await compare(userPass, rows[0].userPass);
 
     if (isValidPass) {
-      // Generate a JWT token with the user's email and a secret key
+      
       const token = jwt.sign({ userEmail }, process.env.SECRET_KEY, {
         expiresIn: '1h',
-        // Token expires in 1 hour
+   
       });
       console.log(token);
       

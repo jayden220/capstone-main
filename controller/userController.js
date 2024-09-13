@@ -39,22 +39,7 @@ const addUser = async (req, res) => {
       res.status(500).json({ message: 'Failed to add user', error: error.message });
     }
   };
-
-  // const addUser = async (req,res)=>{
-  //   let {userName, userEmail, userCell, userPass, userProfile, userRole,Userpass}=req.body
-  //   let hashedP = await hash(password,10)
-    //if(hashedP.stack) throw hashedP //to account for not using err handling
-    // // Below uses error handling and call back funct
-    // hash(password,10,async (err, hashedP)=>{
-    //     if(err) throw err
-    //     console.log(hashedP)
-    //     await insertUserDb(name,surname,age,code,car,color,username,hashedP)
-    // })
-    // res.json({message:"User created successfully"})
-    // await insertUserDb(name,surname,age,code,car,color,username,hashedP)
-// }
-  
-
+ 
 const deleteUser = async (req, res) => {
     const { id } = req.params;
     try {

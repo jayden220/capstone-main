@@ -4,10 +4,10 @@ import { getProduct , getProducts , addProduct , editProduct , deleteProduct } f
 
 const productRouter = express.Router();
 
-// Middleware to parse JSON bodies
+
 productRouter.use(bodyParser.json());
 
-// Route Handlers
+
 productRouter.get('/', getProducts);
 productRouter.get('/:id', getProduct);
 productRouter.post('/addProduct', addProduct);
