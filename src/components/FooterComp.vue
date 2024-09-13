@@ -59,6 +59,8 @@ export default {
   color: white;
   padding: 2em;
   text-align: left;
+  font-family: 'Times New Roman', serif;
+
 }
 
 .footer-container {

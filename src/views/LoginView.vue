@@ -1,5 +1,5 @@
   <template>
-    <div>
+    <div class="login-container">
       <form class="form" @submit.prevent="loginUser()">
         <p class="title">Welcome back</p>
         <p class="message">Log in to purchase your favorite snax</p>
@@ -63,6 +63,15 @@
   </script>
 
 <style scoped>
+.wrapper{
+  background: #000;
+}
+.login-container{
+  background-image: url('https://jayden220.github.io/hostedImages/images/Design%20exquisit%2088b6f594-c356-4e97-99ba-4ddffd6a3080.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background: #000; */
+}
 .form {
   display: flex;
   flex-direction: column;
@@ -71,12 +80,15 @@
   padding: 20px;
   border-radius: 20px;
   position: relative;
-  background-color: #1a1a1a;
+  background-color: #1a0000;
   color: #fff;
   border: 1px solid #333;
-  margin: 0 auto;
-  margin-top: 3em;
-  margin-bottom: 10em;
+  margin: 5em auto;
+  font-family: 'Times New Roman', serif;
+  text-align: center;
+  
+  /* margin-top: 3em; */
+  /* margin-bottom: 10em; */
 }
 
 .title {
@@ -87,7 +99,7 @@
   display: flex;
   align-items: center;
   padding-left: 30px;
-  color: #00bfff;
+  color: #ffffff;
 }
 
 .title::before {
