@@ -1,5 +1,5 @@
 <template>
-  <div class="user-view" v-if="user && user.userName">
+  <div class="user-view" v-if="user in users" :key="userID">
     <h3>Welcome, {{ user.userName }}!</h3>
     <p>Account Information:</p>
     <ul>
@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "userView",
   data() {
@@ -34,7 +36,20 @@ export default {
       this.$store.dispatch("logout").finally(() => {
         this.loading = false;
       });
-    }
+    },
+    async fetchUser(userID) {
+      this.loading = true;
+      try {
+        const response = await axios.get(`https://capstone-main-1.onrender.com/user/${userID}`);
+        console.log('API response:', response);
+        this.user = response.data;
+      } catch (error) {
+        console.error('Error fetching User Data:', error);
+        this.error = error.message;
+      } finally {
+        this.loading = false;
+      }
+    },
   }
 };
 </script>

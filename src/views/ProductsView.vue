@@ -2,6 +2,7 @@
 <template>
   <div class="product-container">
     <h1>Products List</h1>
+    <input type="text" class="search" v-model="searchItem">
     <div v-if="loading" class="loading-message">Loading...</div>
     <div v-if="error" class="error">{{ error }}</div>
     <div v-if="products.length > 0">
@@ -72,6 +73,8 @@ export default {
   padding: 2em;
   font-family: 'Times New Roman', serif;
   text-align: center;
+  gap: 5em;
+  
 }
 
 h1 {
@@ -83,7 +86,8 @@ h1 {
 .product-card {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2em;
+
+  margin: 3em;
   padding: 1.5em;
   background-color: #fff;
   border: 1px solid #222;
@@ -100,6 +104,7 @@ h1 {
   width: 8em;
   height: 8em;
   border-radius: 50%;
+  margin: 0 auto;
   border: 2px solid #222; /* Strong border like chess pieces */
 }
 

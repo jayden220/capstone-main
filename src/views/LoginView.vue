@@ -1,66 +1,66 @@
-<template>
-  <div>
-    <form class="form" @submit.prevent="loginUser()">
-      <p class="title">Welcome back</p>
-      <p class="message">Log in to purchase your favorite snax</p>
-      <label>
-        <input class="input" type="email" placeholder="" required v-model="userEmail">
-        <span>Email</span>
-      </label>
-      <label>
-        <input class="input" type="password" placeholder="" required v-model="userPass">
-        <span>Password</span>
-      </label>
-      <p class="page-link">
-        <span class="page-link-label">Forgot Password?</span>
-      </p>
-      <button  class="submit">Log in</button>
-      <p class="signin">Don't have an account? <a href="/signup">Sign up</a></p>
-    </form>
-  </div>
-</template>
+  <template>
+    <div>
+      <form class="form" @submit.prevent="loginUser()">
+        <p class="title">Welcome back</p>
+        <p class="message">Log in to purchase your favorite snax</p>
+        <label>
+          <input class="input" type="email" placeholder="" required v-model="userEmail">
+          <span>Email</span>
+        </label>
+        <label>
+          <input class="input" type="password" placeholder="" required v-model="userPass">
+          <span>Password</span>
+        </label>
+        <p class="page-link">
+          <span class="page-link-label">Forgot Password?</span>
+        </p>
+        <button  class="submit">Log in</button>
+        <p class="signin">Don't have an account? <a href="/signup">Sign up</a></p>
+      </form>
+    </div>
+  </template>
 
 
-<script>
-// import axios from 'axios'
-export default {
-  name: "loginView",
-  data(){
-    return{
-      userEmail: '',
-      userPass:''
-    }
-  },
-
-  methods:{
-    // async loginUser(){
-    //   const response = await axios.post('login',{
-    //     userEmail : this.userEmail,
-    //     userPass : this.userPass
-    //   })
-    //   console.log(response);
-      
-    
-
-    async loginUser() {
-        if (!this.userEmail || !this.userPass) {
-          console.log('Please fill in all fields');
-          return;
-        }
-        try {
-          await this.$store.dispatch('loginUser', {
-            userEmail: this.userEmail,
-            userPass: this.userPass
-          });
-          this.$router.push('/');
-        } catch (error) {
-          console.error('Login failed:', error);
-        }
+  <script>
+  // import axios from 'axios'
+  export default {
+    name: "loginView",
+    data(){
+      return{
+        userEmail: '',
+        userPass:''
       }
+    },
+
+    methods:{
+      // async loginUser(){
+      //   const response = await axios.post('login',{
+      //     userEmail : this.userEmail,
+      //     userPass : this.userPass
+      //   })
+      //   console.log(response);
+        
+      
+
+      async loginUser() {
+          if (!this.userEmail || !this.userPass) {
+            console.log('Please fill in all fields');
+            return;
+          }
+          try {
+            await this.$store.dispatch('loginUser', {
+              userEmail: this.userEmail,
+              userPass: this.userPass
+            });
+            this.$router.push('/');
+          } catch (error) {
+            console.error('Login failed:', error);
+          }
+        }
+    }
+    
   }
-  
-}
-</script>
+  </script>
 
 <style scoped>
 .form {

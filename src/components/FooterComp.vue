@@ -4,24 +4,42 @@
       <!-- Left Section: Store Info -->
       <div class="footer-left">
         <h2 class="fade-in-left">About Us</h2>
-        <p class="fade-in-left">We provide premium quality biltong, sourced locally and made with passion. Experience the authentic taste of Cape Town with every bite.</p>
-        
+        <p class="fade-in-left">
+          We provide premium quality chess sets, crafted with precision and passion. Our goal is to offer elegant, durable chess pieces that enhance your playing experience.
+        </p>
+
         <h3 class="fade-in-left">Contact Us</h3>
-        <p class="fade-in-left">Email: info@biltongstore.com</p>
+        <p class="fade-in-left">Email: info@royalchessmarket.com</p>
         <p class="fade-in-left">Phone: +27 12 345 6789</p>
-        
+
         <h3 class="fade-in-left">Operating Hours</h3>
         <p class="fade-in-left">Mon-Fri: 8am - 6pm</p>
         <p class="fade-in-left">Sat-Sun: 9am - 4pm</p>
+
+        <!-- Policies Section -->
+        <h3 class="fade-in-left">Policies</h3>
+        <ul class="fade-in-left list-unstyled">
+          <li><a href="/privacy-policy" class="text-light">Privacy Policy</a></li>
+          <li><a href="/return-policy" class="text-light">Return Policy</a></li>
+          <li><a href="/terms-of-service" class="text-light">Terms of Service</a></li>
+        </ul>
       </div>
-      
-      <!-- Right Section: Social Media & Icons -->
+
+      <!-- Right Section: Social Media & Info -->
       <div class="footer-right">
-        <h2 class="fade-in-left">Follow Us</h2>
+        <h2 class="fade-in-left">Royal Chess Market</h2>
+        <p class="fade-in-left">
+          Elevating the game of chess with beautifully designed, premium chess sets. Whether you’re a casual player or a chess master, our pieces are crafted to enrich your experience.
+        </p>
+        <!-- Social Media Icons -->
         <div class="social-icons bounce-icons">
-          <a href="#"><i class="fa fa-facebook">ddcc</i></a>
-          <a href="#"><i class="fa fa-instagram"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="https://facebook.com" class="fab fa-facebook"></a>
+          <a href="https://instagram.com" class="fab fa-instagram"></a>
+          <a href="https://twitter.com" class="fab fa-twitter"></a>
+        </div>
+        <!-- Copyright -->
+        <div class="text-center py-2">
+          <p>© 2024 <br> JAYDEN VAN ROOYEN. <br> All rights reserved.</p>
         </div>
       </div>
     </div>
@@ -35,7 +53,7 @@ export default {
 </script>
 
 <style scoped>
-
+/* General Footer Styles */
 .footer {
   background-color: #2c2a29;
   color: white;
@@ -60,20 +78,24 @@ export default {
 }
 
 /* Text Styling */
-.footer-left p, .footer-right .social-icons {
+.footer-left p, .footer-right p, .footer-left ul {
   margin-bottom: 1em;
   font-size: 1em;
 }
 
+.footer-left ul li {
+  margin-bottom: 0.5em;
+}
+
 /* Social Icons */
-.footer-right .social-icons a {
+.social-icons a {
   color: white;
   font-size: 1.5em;
   margin-right: 15px;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.footer-right .social-icons a:hover {
+.social-icons a:hover {
   color: #ffcc00; /* Add hover effect color */
   transform: scale(1.3);
 }
@@ -102,7 +124,7 @@ export default {
   }
 }
 
-/* Apply animations */
+/* Apply Animations */
 .fade-in-left {
   animation: fadeInLeft 1.5s ease;
 }
@@ -111,7 +133,7 @@ export default {
   animation: bounce 2s infinite;
 }
 
-/* Responsive Styling */
+/* Responsive Styles */
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
@@ -122,26 +144,31 @@ export default {
     margin-bottom: 1.5em;
   }
 }
+
 @media (max-width: 430px) {
-    .footer-container {
-      flex-direction: column;
-      align-items: center; /* Center the content horizontally */
-    }
-
-    .footer-left, .footer-right {
-      flex-basis: 100%;
-      margin-bottom: 1.5em;
-      text-align: center; /* Center the text */
-    }
-
-    .footer-left h2, .footer-right h2 {
-      font-size: 1.2em; /* Reduce font size for better readability */
-    }
-
-    .footer-left p, .footer-right .social-icons {
-      font-size: 0.9em; /* Reduce font size for better readability */
-    }
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
   }
 
+  .footer-left, .footer-right {
+    flex-basis: 100%;
+    margin-bottom: 1.5em;
+    text-align: center;
+  }
+
+  .footer-left h2, .footer-right h2 {
+    font-size: 1.2em;
+  }
+
+  .footer-left p, .footer-right p {
+    font-size: 0.9em;
+  }
+
+  .social-icons a {
+    font-size: 1.2em;
+  }
+}
 </style>
+
 

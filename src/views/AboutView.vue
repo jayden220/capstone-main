@@ -1,147 +1,92 @@
 <template>
-  <div class="container">
+  <div class="about-page">
     <div class="about-header">
-      <h3>About Our Store</h3>
+      <h3>About Us</h3>
+      <p>Learn about our mission and the craftsmanship behind our chess pieces.</p>
     </div>
     <div class="about-info">
-        <div class="about-comp">
-          <h3>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore error possimus, iure similique repellendus perferendis non aliquid animi reiciendis explicabo, nesciunt voluptas culpa hic fuga quidem distinctio blanditiis at? Voluptatum.</h3>
-        </div>
-        <div class="about-prod">
-          <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore minus qui iure minima est dolore itaque, sed voluptatem doloribus? Officiis illum, velit vel aliquam nostrum atque ad id molestias magnam?</h3>
-        </div>
-    </div>
-      <div class="about-footer">
-
+      <div class="about-comp">
+        <h3>
+          At Royal Chess Market, we take pride in the meticulous craftsmanship that goes into every chess set we create. Our chess pieces are handcrafted by skilled artisans who use only the finest materials, ensuring durability and elegance in every set. From the selection of premium woods and marbles to the precision carving and polishing, every detail is carefully considered. Our commitment to quality means that each chess set is not just a game piece but a work of art, designed to stand the test of time.
+        </h3>
       </div>
+      <div class="about-prod">
+        <h3>
+          Founded by chess enthusiasts, Royal Chess Market is driven by a deep love for the game and a desire to share that passion with others. We believe that chess is more than just a game; it’s a rich tradition that brings people together and challenges the mind. Our mission is to make high-quality chess sets accessible to players of all levels, from beginners to grandmasters. By blending tradition with innovation, we aim to provide chess sets that enhance your playing experience and inspire your love for the game.
+        </h3>
+      </div>
+    </div>
+    <div class="about-footer">
+      <!-- Footer content if any -->
+    </div>
   </div>
 </template>
+
 <style scoped>
-main{
-  background-color: black;
-  margin: 0 0;
-  height: 200vh;
+/* Background Chessboard Styling */
+.container {
+  background: linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff),
+              linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);
+  background-size: 40px 40px;
+  background-color: #f5f5f5; 
+  padding: 2em;
+  min-height: 100vh;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', serif;
+  text-align: center;
 }
-/* .container {
+.about-page {
   width: 100%;
-  height: 100%;
-  --bg: linear-gradient(
-      45deg,
-      rgb(0, 0, 0) 25%,
-      transparent 25%,
-      transparent 75%,
-      rgb(0, 0, 0) 75%,
-      rgb(0, 0, 0)
-    ),
-    linear-gradient(
-      45deg,
-      rgb(0, 0, 0) 25%,
-      white 25%,
-      white 75%,
-      rgb(0, 0, 0) 75%,
-      rgb(0, 0, 0)
-    );
-  --bgsize: 60px 60px;
-  --bgposition: 0 0, 30px 30px;
-  background-color: rgb(0, 0, 0);
-  background-image: var(--bg);
-  background-size: var(--bgsize);
-  background-position: var(--bgposition);
-  position: relative;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  overflow: hidden;
-  box-shadow: inset 0px 0px 500px rgb(15, 15, 15);
-  /* margin: 0 0; */
-  /* padding: 0 0; */
-/* } */
-
-/* .container::before {
-  content: "";
-  width: 100%;
-  background-size: cover;
-  height: 150%;
-  box-shadow: 0px -100px 500px black, inset 0px 100px 500px rgb(15, 15, 15);
-  position: absolute;
-  top: 55%;
-  background-image: var(--bg);
-  background-size: var(--bgsize);
-  background-position: var(--bgposition);
-  transform-origin: top;
-  transform: rotateX(80deg);
+  height: 80vh;
+  padding: 3em 2em;
   background-color: black;
-}  */
-
-.container{
-  /* margin: 3em; */
-  background-color: aqua;
+  font-family: 'Times New Roman', serif;
+  text-align: center; 
 }
 
-.about-header{
-  background: darkgoldenrod;
-  height: 30vh;
-  /* margin: 2em ; */
+
+.about-header, .about-footer {
+  background-color: rgb(91, 66, 4);
+  color: #fff;
+  padding: 2em;
+  text-align: center;
 }
-.about-header h3{
-  display: flex;
-  justify-content: center;
-  /* margin: 5em 0; */
-  padding-top: 2.5em;
+
+.about-header h3, .about-header p, .about-footer {
+  margin: 0;
+  color: white;
 }
-.about-footer{
-  background: darkgoldenrod;
-  height: 30vh;
-  padding-top: 5em;
-  /* margin: 2em ; */
-}
+
 .about-info {
-  margin: 2em 2em;
   display: flex;
-  /* justify-content: space-between; */
-  justify-content: space-evenly;
-  line-height: 40px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 2em 0;
+}
 
+.about-info h3 {
+  font-size: 1.2rem;
+  margin: 1em 0;
+  max-width: 600px;
+  color: white;
 }
-h3 {
-  font-size: 24px; /* default font size */
-}
+
 @media (max-width: 768px) {
-  h3 {
-    font-size: 20px; /* adjust font size for smaller screens */
+  .about-info {
+    flex-direction: column;
+    align-items: center;
   }
-}
-@media (max-width: 600px) {
-  h3 {
-    font-size: 18px; /* adjust font size for even smaller screens */
-  }
-  .contact-container {
-    padding: 15px;
 
+  .about-info h3 {
+    font-size: 1rem;
+    text-align: center;
+    margin: 1em 0;
   }
-  
-  .submit-button {
-    font-size: 14px;
-  }
-  .about-info{
-    display: flex;
-    flex-direction: column;
-    flex: wrap;
-    /* margin: 0 auto; */
-    padding: 0 0;
-    margin: 2em 2em;
 }
-}
+
 @media (max-width: 480px) {
-  h3 {
-    font-size: 16px; /* adjust font size for mobile screens */
+  .about-info h3 {
+    font-size: 0.9rem;
   }
-  .about-info{
-    display: flex;
-    flex-direction: column;
-    flex: wrap;
-    /* margin: 0 auto; */
-    padding: 0 0;
-    margin: 1em 2em;
-}
 }
 </style>

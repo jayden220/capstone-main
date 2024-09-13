@@ -55,14 +55,15 @@ export default{
 <style>
 
 .navbar-nav .nav-link {
-    color: #e8a64f;
+    color: #bbaa93;
     transition: color 0.3s ease, background-color 0.3s linear; 
 }
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
     color: #ffffff; 
-    background-color: maroon;
+    text-decoration: underline;
+    text-decoration-color: #d97b70;
     border-radius: 0.25rem; 
     
     
@@ -70,7 +71,7 @@ export default{
 
 /* Styles for the login and register links */
 .userAccount .nav-link {
-    color: #007bff; /* Primary color for login/register links */
+    color: #007bff; 
 }
 
 .userAccount .nav-link:hover,

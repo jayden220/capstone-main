@@ -1,12 +1,17 @@
 <template>
   <div class="main-container">
+    
     <div class="info-container">
       <h2>Keep in touch</h2>
         <div class="contact-group">
+          <br> 
           <h3>How to get a hold of us</h3>
-          <p>phone number</p>
-          <p>email</p>
-          <p>location</p>
+          <br>
+          <p>+27 456 874 8979</p>
+          <br>
+          <p>royalchessmarket@gmail.com</p>
+          <br>
+          <p>4 Kom Avenue Parden Island</p>
         </div>
     </div>
     <div class="contact-container">
@@ -25,7 +30,6 @@
                 <textarea id="message" name="message" rows="5" required></textarea>
               </div>
               <div class="message-button">
- 
                   <button class="button">
                     <div class="outline"></div>
                     <div class="state state--default">
@@ -123,6 +127,11 @@ export default {
 <style>
 .main-container{
   display: flex;
+  font-family: 'Times New Roman', serif;
+  text-align: center;
+  background-image: url('https://jayden220.github.io/hostedImages/images/07a74cfc-1cc2-4165-99f1-dc6ae4126c78.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .info-container {
   max-width: 600px;

@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { createStore } from 'vuex'
-import { toast } from 'vue3-toastify'
+import { toast } from 'vue3-toastify'    
+// import { toast } from 'vue-toastification';
 import router from '@/router'
 import 'vue3-toastify/dist/index.css'
 import axios from 'axios'
@@ -44,6 +45,9 @@ export default createStore({
     setUser(state, user){
       state.user = user
     },
+    setUsers(state, users){
+      state.users = users
+    },
     getProduct(state,payload){
       state.product = payload
     },
@@ -62,7 +66,7 @@ export default createStore({
 
     async fetchUser(info, id) {
       try {
-        const { result, msg } = await (await axios.get(`https://capstone-main-1.onrender.com/user/${id}`)).data
+        const { result, msg } = await (await axios.get(`https://capstone-main-1.onrender.com/user/singleUser/${id}`)).data
         if (result) {
           info.commit('getUser', result)
         } else {
@@ -138,22 +142,44 @@ export default createStore({
         })
       }
     },
+    // async deleteUser(info, id) {
+    //   try {
+    //     const { msg, err } = await (await axios.delete(`https://capstone-main-1.onrender.com/user/${id}`)).data
+    //     if (msg) {
+    //       info.dispatch('fetchUsers')
+    //     } else {
+    //       toast.error(`${err}`, {
+    //         autoClose: 2000,
+    //         position: toast.POSITION.TOP_CENTER
+    //       })
+    //     }
+    //   } catch (e) {
+    //     toast.error(`${e.message}`, {
+    //       autoClose: 2000,
+    //       position: toast.POSITION.TOP_CENTER
+    //     })
+    //   }
+    // },
     async deleteUser(info, id) {
       try {
-        const { msg, err } = await (await axios.delete(`https://capstone-main-1.onrender.com/user/${id}`)).data
+        const { msg, err } = await (await axios.delete(`https://capstone-main-1.onrender.com/user/${id}`)).data;
         if (msg) {
-          info.dispatch('fetchUsers')
+          info.dispatch('fetchUsers');
+          toast.success('User deleted successfully', {
+            autoClose: 2000,
+            position: toast.POSITION.TOP_CENTER
+          });
         } else {
           toast.error(`${err}`, {
             autoClose: 2000,
             position: toast.POSITION.TOP_CENTER
-          })
+          });
         }
       } catch (e) {
         toast.error(`${e.message}`, {
           autoClose: 2000,
           position: toast.POSITION.TOP_CENTER
-        })
+        });
       }
     },
 
@@ -228,6 +254,7 @@ export default createStore({
         const { msg } = await (await axios.delete(`https://capstone-main-1.onrender.com/product/${id}`)).data
         if (msg) {
           info.dispatch('fetchProducts')
+          alert('user deleted')
           toast.success(`${msg}`, {
             autoClose: 2000,
             position: toast.POSITION.TOP_CENTER
