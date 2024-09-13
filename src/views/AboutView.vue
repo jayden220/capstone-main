@@ -74,6 +74,9 @@
     flex-direction: column;
     align-items: center;
   }
+  .about-page{
+    height: 100vh;
+  }
 
   .about-info h3 {
     font-size: 1rem;

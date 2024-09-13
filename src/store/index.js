@@ -7,8 +7,8 @@ import axios from 'axios'
 // import {useCookies} from 'vue-cookies'
 
 
-axios.defaults.withCredentials = true;
-axios.defaults.headers.common['Authorization'] = `Bearer ${cookies.get('token')}`;
+// axios.defaults.withCredentials = true;
+// axios.defaults.headers.common['Authorization'] = `Bearer ${cookies.get('token')}`;
 // const { cookies } = useCookies()
 // useCookies()
 const apiUrl = 'https://capstone-main-1.onrender.com'
