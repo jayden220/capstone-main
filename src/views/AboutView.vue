@@ -16,14 +16,12 @@
         </h3>
       </div>
     </div>
-    <div class="about-footer">
-      <!-- Footer content if any -->
-    </div>
+
   </div>
 </template>
 
 <style scoped>
-/* Background Chessboard Styling */
+
 .container {
   background: linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff),
               linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);

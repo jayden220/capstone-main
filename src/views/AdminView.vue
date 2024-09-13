@@ -39,7 +39,7 @@
       </table>
     </div>
 
-    <!-- Add User Button -->
+   
     <div class="text-center mt-5 mb-4">
       <button class="cssbuttons-io-button" type="button" data-toggle="modal" data-target="#AddUserModal">
         <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +50,7 @@
       </button>
     </div>
 
-    <!-- User Table -->
+
     <h4 class="text-center">Users</h4>
     <div class="table-responsive">
       <table class="table table-striped">
@@ -134,8 +134,8 @@ export default {
     async addProduct() {
       try {
         await this.$store.dispatch('addAProduct', this.newProduct);
-        this.newProduct = {}; // Reset form
-        this.fetchProducts(); // Refresh product list
+        this.newProduct = {}; 
+        this.fetchProducts(); 
       } catch (error) {
         this.error = error.message;
       }
@@ -143,8 +143,8 @@ export default {
     async handleUpdateProduct() {
       try {
         await this.$store.dispatch('updateProduct', this.editProduct);
-        this.editProduct = {}; // Reset form
-        this.fetchProducts(); // Refresh product list
+        this.editProduct = {}; 
+        this.fetchProducts(); 
       } catch (error) {
         this.error = error.message;
       }
@@ -152,7 +152,7 @@ export default {
     async deleteProduct(productID) {
       try {
         await this.$store.dispatch('deleteProduct', productID);
-        this.fetchProducts(); // Refresh product list
+        this.fetchProducts(); 
         
       } catch (error) {
         this.error = error.message;
@@ -161,8 +161,8 @@ export default {
     async handleAddUser() {
       try {
         await this.$store.dispatch('addUser', this.newUser);
-        this.newUser = {}; // Reset form
-        this.fetchUsers(); // Refresh user list
+        this.newUser = {}; 
+        this.fetchUsers(); 
       } catch (error) {
         this.error = error.message;
       }
@@ -170,8 +170,8 @@ export default {
     async handleUpdateUser() {
       try {
         await this.$store.dispatch('updateUser', this.editUser);
-        this.editUser = {}; // Reset form
-        this.fetchUsers(); // Refresh user list
+        this.editUser = {}; 
+        this.fetchUsers(); 
       } catch (error) {
         this.error = error.message;
       }
@@ -179,7 +179,7 @@ export default {
     async deleteUser(userID) {
       try {
         await this.$store.dispatch('deleteUser', userID);
-        this.fetchUsers(); // Refresh user list
+        this.fetchUsers(); 
       } catch (error) {
         this.error = error.message;
       }
@@ -201,7 +201,6 @@ export default {
 </script>
 
 <style scoped>
-/* From Uiverse.io by adamgiebl */ 
 .cssbuttons-io-button {
   display: flex;
   align-items: center;
@@ -255,9 +254,7 @@ export default {
   
 }
 
-/* For small screens like 320px */
 @media (max-width: 576px) {
-  /* Ensure table responsiveness with scroll */
   .table-responsive {
     display: block;
     width: 100%;
@@ -265,31 +262,29 @@ export default {
   }
 
   .table thead {
-    display: none; /* Hide table headers for smaller screens */
+    display: none; 
   }
 
   .table tbody tr {
     display: block;
     margin-bottom: 15px;
-    border-bottom: 2px solid #ddd; /* Optional: Add some styling for separation */
+    border-bottom: 2px solid #ddd; 
   }
 
   .table tbody tr td {
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    font-size: 14px; /* Reduce font size */
+    font-size: 14px; 
   }
 
-  /* Add a pseudo-element for table labels, matching the column headers */
   .table tbody tr td::before {
     content: attr(data-label);
     font-weight: bold;
-    width: 45%; /* Adjust this to your liking */
+    width: 45%; 
   }
 }
 
-/* General responsive adjustments for buttons and tables */
 .table-responsive {
   width: 100%;
   overflow-x: auto;

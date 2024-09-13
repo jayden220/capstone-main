@@ -2,7 +2,7 @@
   <div>
 
   </div>
-    <div>
+    <div class="container">
       <form class="form">
         <p class="title">Register</p>
         <p class="message">Signup now and purchase your favourite snax</p>
@@ -46,33 +46,6 @@ import { toast } from 'vue3-toastify'
   
   export default {
     name: "signupView",
-//     data() {
-//       return {
-//           userName: '',
-//           userEmail: '',
-//           userCell: '',
-//           userPass: '',
-//           userProfile: '',
-//           userRole: ''
-//       };
-//     },
-//     methods: {
-//   addUser(event) {
-//     event.preventDefault();
-//     try {
-//       this.$store.dispatch('addUser', {
-//         userName: this.userName,
-//         userEmail: this.userEmail,
-//         userCell: this.userCell,
-//         userPass: this.userPass,
-//         userProfile: this.userProfile,
-//         userRole : this.userRole
-
-//       });
-//     } catch (error) {
-//       console.error('Error adding user:', error);
-//     }
-//     }
 
 methods: {
   addUser() {
@@ -105,7 +78,10 @@ methods: {
 }
   </script>
 <style scoped>
-
+.container{
+  background-image: url('https://jayden220.github.io/hostedImages/images/afa4b08e-dc11-47c3-8b40-79caf9a31298.png');
+  background-repeat: no-repeat;
+}
 .form {
   display: flex;
   flex-direction: column;
@@ -118,8 +94,8 @@ methods: {
   color: #fff;
   border: 1px solid #333;
   margin: 0 auto;
-  margin-top: 3em;
-  margin-bottom: 10em;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .title {
@@ -173,11 +149,7 @@ methods: {
   color: #00bfff;
 }
 
-/* .flex {
-  display: flex;
-  width: 100%;
-  gap: 6px;
-} */
+
 
 .form label {
   position: relative;

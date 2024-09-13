@@ -229,7 +229,6 @@ button:hover {
   background-color: #218838;
 }
 
-/* For screens larger than 768px */
 @media (max-width: 768px) {
   .cart-table {
     display: block;
@@ -254,8 +253,6 @@ button:hover {
     flex-direction: column;
   }
 }
-
-/* For screens smaller than 480px */
 @media (max-width: 480px) {
   .cart-title {
     font-size: 1.2rem;
@@ -281,7 +278,7 @@ button:hover {
     border-collapse: separate;
   }
 
-  /* Stack items vertically */
+
   .cart-table thead,
   .cart-table tbody,
   .cart-table tr {

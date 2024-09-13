@@ -70,7 +70,7 @@
   background-image: url('https://jayden220.github.io/hostedImages/images/Design%20exquisit%2088b6f594-c356-4e97-99ba-4ddffd6a3080.png');
   background-repeat: no-repeat;
   background-size: cover;
-  /* background: #000; */
+
 }
 .form {
   display: flex;
@@ -86,9 +86,6 @@
   margin: 5em auto;
   font-family: 'Times New Roman', serif;
   text-align: center;
-  
-  /* margin-top: 3em; */
-  /* margin-bottom: 10em; */
 }
 
 .title {

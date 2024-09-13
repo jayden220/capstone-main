@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 
-// Initialize cart from localStorage
+
 const cart = ref(JSON.parse(localStorage.getItem('cart')) || []);
 
 export function useCart() {
@@ -18,11 +18,6 @@ export function useCart() {
     saveCartToLocalStorage();
   };
 
-  // const removeFromCart = (product) => {
-  //   cart.value = cart.value.filter((item) => item.productID !== product.productID);
-  //   saveCartToLocalStorage();
-  //   console.log('trying to remove')
-  // };
   const removeFromCart = (productID) => {
     const product = cart.value.find((item) => item.productID === productID);
     if (product) {

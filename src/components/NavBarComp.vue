@@ -28,17 +28,20 @@
                         <router-link class="nav-link" to="/contact">Contact us</router-link>
                     </li>
                     <ul class="userAccount navbar-nav">
-                        <li class="nav-item">
+                        <button>
+                            <li class="nav-item">
                             <router-link class="nav-link" to="/login">Login</router-link>
                         </li>
-                        <li class="nav-item">
+                        </button>
+                        
+                        <button>
+                            <li class="nav-item">
                             <router-link class="nav-link" to="/signup">Register</router-link>
                         </li>
+                        </button>
+                        
                         <li class="nav-item">
-                            <router-link class="nav-link" to="/profile">icon</router-link>
-                        </li>
-                        <li class="nav-item">
-                            <button @click="$store.dispatch('logout')">Logout</button>
+                            <button @click="$store.dispatch('logout')" class="logout">Logout</button>
                         </li>
                     </ul>
                 </ul>
@@ -68,32 +71,52 @@ export default{
     
     
 }
+button,
+button:focus {
+  font-size: 17px;
 
-/* Styles for the login and register links */
+  border-radius: 0.7rem;
+  background-image: linear-gradient(rgb(214, 202, 254), rgb(158, 129, 254));
+  border: 2px solid rgb(50, 50, 50);
+  border-bottom: 5px solid rgb(50, 50, 50);
+  box-shadow: 0px 1px 6px 0px rgb(158, 129, 254);
+  transform: translate(0, -3px);
+  cursor: pointer;
+  transition: 0.2s;
+  transition-timing-function: linear;
+  margin: 0 .5em;
+}
+
+button:active {
+  transform: translate(0, 0);
+  border-bottom: 2px solid rgb(50, 50, 50);
+}
+
+
 .userAccount .nav-link {
     color: #007bff; 
 }
 
 .userAccount .nav-link:hover,
 .userAccount .nav-link:focus {
-    color: #0056b3; /* Darker primary color on hover */
-    text-decoration: underline; /* Underline on hover */
+    color: #f1f2f4; 
+    
 }
 
-/* Styling for the navbar toggler */
+
 .navbar-toggler {
-    border-color: #007bff; /* Border color for the toggler */
+    border-color: #ffffff; 
 }
 
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h16M4 12h16m-7 6h7' /%3e%3c/svg%3e");
 }
 
-/* Styles for active or current page link */
+
 .navbar-nav .nav-link.active {
     color: #c15144;
     font-weight: bold; 
-    /* background-color: #575149; */
+ 
 }
 
 </style>

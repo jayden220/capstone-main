@@ -1,7 +1,6 @@
 /* eslint-disable */
 import { createStore } from 'vuex'
 import { toast } from 'vue3-toastify'    
-// import { toast } from 'vue-toastification';
 import router from '@/router'
 import 'vue3-toastify/dist/index.css'
 import axios from 'axios'
@@ -9,7 +8,7 @@ import axios from 'axios'
 
 
 axios.defaults.withCredentials = true;
-// axios.defaults.headers.common['Authorization'] = `Bearer ${cookies.get('token')}`;
+axios.defaults.headers.common['Authorization'] = `Bearer ${cookies.get('token')}`;
 // const { cookies } = useCookies()
 // useCookies()
 const apiUrl = 'https://capstone-main-1.onrender.com'
@@ -26,7 +25,7 @@ export default createStore({
   getters: {
     singleProduct:(state)=>state.product,
     singleProduct: (state) => state.product,
-    cartItems: (state) => state.cart, // Get cart items from the state
+    cartItems: (state) => state.cart, 
     cartTotal: (state) => {
         return state.cart.reduce((total, item) => total + (item.productPrice * item.quantity), 0);
     
@@ -142,24 +141,7 @@ export default createStore({
         })
       }
     },
-    // async deleteUser(info, id) {
-    //   try {
-    //     const { msg, err } = await (await axios.delete(`https://capstone-main-1.onrender.com/user/${id}`)).data
-    //     if (msg) {
-    //       info.dispatch('fetchUsers')
-    //     } else {
-    //       toast.error(`${err}`, {
-    //         autoClose: 2000,
-    //         position: toast.POSITION.TOP_CENTER
-    //       })
-    //     }
-    //   } catch (e) {
-    //     toast.error(`${e.message}`, {
-    //       autoClose: 2000,
-    //       position: toast.POSITION.TOP_CENTER
-    //     })
-    //   }
-    // },
+
     async deleteUser(info, id) {
       try {
         const { msg, err } = await (await axios.delete(`https://capstone-main-1.onrender.com/user/${id}`)).data;
@@ -186,21 +168,17 @@ export default createStore({
     async fetchProducts(info) {
       try {
         const response = await axios.get('https://capstone-main-1.onrender.com/product');
-        console.log('API Response:', response.data); // Log the entire response
+        console.log('API Response:', response.data); 
         const { results } = response.data;
         if (results) {
           info.commit('getProducts', results);
         } else {
-          // router.push({ name: 'login' });
+          router.push({ name: 'login' });
         }
       } catch (error) {
         console.error('Error fetching items:', error);
       }
     },
-    
-
- 
- 
     async fetchProduct(info, id) {
       try {
         const { result, msg } = await (await axios.get(`https://capstone-main-1.onrender.com/product/${id}`)).data
@@ -274,8 +252,7 @@ export default createStore({
             autoClose: 2000,
             position: toast.POSITION.TOP_CENTER
           });
-          // Redirect user after successful login
-          router.push({ name: 'home' }); // Change 'home' to your desired route
+          router.push({ name: 'home' }); 
         } else {
           toast.error(data.message, {
             autoClose: 2000,
@@ -289,12 +266,10 @@ export default createStore({
         });
       }
     },
-    // Local variable to track logout status
 
     async logout({ commit }) {
       let hasLoggedOut = false; 
       try {
-        // Check if the user has already logged out
         if (hasLoggedOut) {
           toast.info("User is already logged out", {
             autoClose: 2000,
@@ -302,20 +277,10 @@ export default createStore({
           });
           return;
         }
-    
-        // Remove the token from the cookies
         $cookies.remove('token');
-    
-        // Clear the user data from the state
         commit('setUser', null);
-    
-        // Redirect the user to the login page
         router.push({ name: 'login' });
-    
-        // Set the flag to indicate the user has logged out
         hasLoggedOut = true;
-    
-        // Show the success toast notification
         toast.success("Logged out successfully", {
           autoClose: 2000,
           position: toast.POSITION.TOP_CENTER
@@ -327,27 +292,7 @@ export default createStore({
         });
       }
     },
-    
-  
-    // async loginUser({ commit }, info) {
-    //   console.log(info);
-    //   let { data } = await axios.post(`https://capstone-main-1.onrender.com/user/login`, info);
-    //   console.log(data);
-    //   $cookies.set('token', data.token);
-    //   if (data.message) {
-    //     toast("Logged In Successfully", {
-    //       "theme": "dark",
-    //       "type": "default",
-    //       "position": "top-center",
-    //       "dangerouslyHTMLString": true
-    //     });
-    //   }
-    // }
-
-
-  },
-
-  
+  },  
   modules: {
     
   }

@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="footer-container">
-      <!-- Left Section: Store Info -->
+     
       <div class="footer-left">
         <h2 class="fade-in-left">About Us</h2>
         <p class="fade-in-left">
@@ -16,7 +16,7 @@
         <p class="fade-in-left">Mon-Fri: 8am - 6pm</p>
         <p class="fade-in-left">Sat-Sun: 9am - 4pm</p>
 
-        <!-- Policies Section -->
+    
         <h3 class="fade-in-left">Policies</h3>
         <ul class="fade-in-left list-unstyled">
           <li><a href="/privacy-policy" class="text-light">Privacy Policy</a></li>
@@ -25,19 +25,14 @@
         </ul>
       </div>
 
-      <!-- Right Section: Social Media & Info -->
+      
       <div class="footer-right">
         <h2 class="fade-in-left">Royal Chess Market</h2>
         <p class="fade-in-left">
           Elevating the game of chess with beautifully designed, premium chess sets. Whether you’re a casual player or a chess master, our pieces are crafted to enrich your experience.
         </p>
-        <!-- Social Media Icons -->
-        <div class="social-icons bounce-icons">
-          <a href="https://facebook.com" class="fab fa-facebook"></a>
-          <a href="https://instagram.com" class="fab fa-instagram"></a>
-          <a href="https://twitter.com" class="fab fa-twitter"></a>
-        </div>
-        <!-- Copyright -->
+    
+  
         <div class="text-center py-2">
           <p>© 2024 <br> JAYDEN VAN ROOYEN. <br> All rights reserved.</p>
         </div>
@@ -53,7 +48,7 @@ export default {
 </script>
 
 <style scoped>
-/* General Footer Styles */
+
 .footer {
   background-color: #2c2a29;
   color: white;

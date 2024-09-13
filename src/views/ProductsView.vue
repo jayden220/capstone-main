@@ -28,8 +28,6 @@ import { useCart } from '@/composables/cartFunctions';
 export default {
   setup() {
     const { addToCart, cart } = useCart();
-
-    // Method to check if a product is in the cart
     const isInCart = (product) => {
       return cart.value.some((item) => item.productID === product.productID);
     };
@@ -97,7 +95,7 @@ h1 {
 }
 
 .product-card:hover {
-  background-color: #f0e4d7; /* Light wood-tone on hover */
+  background-color: #f0e4d7; 
 }
 
 .product-image {
@@ -105,7 +103,7 @@ h1 {
   height: 8em;
   border-radius: 50%;
   margin: 0 auto;
-  border: 2px solid #222; /* Strong border like chess pieces */
+  border: 2px solid #222; 
 }
 
 button {
@@ -123,7 +121,7 @@ button:hover {
   background-color: #555;
 }
 
-/* Responsive layout for smaller screens */
+
 @media (max-width: 900px) {
   .product-card {
     grid-template-columns: repeat(2, 1fr);
@@ -143,7 +141,7 @@ button:hover {
   font-family: 'Times New Roman', serif;
 }
 
-/* Basic styling for product descriptions */
+
 .product-card > div {
   background-color: #f7f7f7;
   padding: 1em;
